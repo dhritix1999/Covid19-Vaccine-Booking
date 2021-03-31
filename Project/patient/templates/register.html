@@ -22,64 +22,60 @@
                                 {#                                <img src="/logo-black.png" alt="logo" class="logo">#}
                             </div>
                             <p class="login-card-description">Create new Account</p>
-                            <form action="#!">
+                            <form action="#">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Full Name</label>
-                                        <input type="text" class="form-control" id="inputEmail4" placeholder="John Doe">
+                                        <label for="name">Full Name</label>
+                                        <input type="text" class="form-control" id="name"  name="name" placeholder="John Doe" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Phone no</label>
-                                        <input type="text" class="form-control" id="inputPassword4" placeholder="050 xxx xxxx">
+                                        <label for="phone">Phone no</label>
+                                        <input type="text" class="form-control" id="phone" name="phone" placeholder="050 xxx xxxx" required>
                                     </div>
                                 </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="inputEmail4">Email</label>
-                                            <input type="email" class="form-control" id="inputEmail4" placeholder="name@example.com">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="inputPassword4">Password</label>
-                                            <input type="password" class="form-control" id="inputPassword4" placeholder="******">
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="***********" required>
                                         </div>
                                     </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Date of Birth</label>
-                                        <input type="date" class="form-control" id="inputEmail4" placeholder="21/03/2002">
+                                        <label for="dateOfBirth">Date of Birth</label>
+                                        <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="21/03/2002" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Gender</label>
-                                        <div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">M</label>
+                                        <label for="gender">Gender</label>
+                                        <div class="form control custom-radiolist" id="gender">
+                                           <input class="radio" type="radio" id="male" name="gender" value="male">
+                                            <label class="radio" for="male">Male</label>
+                                            <input class="radio" type="radio" id="female" name="gender" value="female">
+                                            <label class="radio" for="female">Female</label>
                                         </div>
-                                        <div class=" form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">F</label>
-                                        </div>
-                                            </div>
                                     </div>
                                 </div>
                                     <div class="form-group">
-                                        <label for="inputAddress">Emirates ID</label>
-                                        <input type="text" class="form-control" id="inputAddress" placeholder="xxx xxxx xxxx xx">
+                                        <label for="emiratesID">Emirates ID</label>
+                                        <input type="number" class="form-control" id="emiratesID" name="emiratesID" placeholder="xxxxxxx" required>
                                     </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Longitude</label>
-                                        <input type="number" class="form-control" id="inputEmail4" placeholder="34.67">
+                                        <label for="locationLng">Longitude</label>
+                                        <input type="number" class="form-control" id="locationLng" name="locationLng" placeholder="xx.xx" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Latitude</label>
-                                        <input type="number" class="form-control" id="inputPassword4" placeholder="25.6">
+                                        <label for="locationLat">Latitude</label>
+                                        <input type="number" class="form-control" id="locationLat" name="locationLat" placeholder="xx.xx" required>
                                     </div>
                                 </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
-                                            <label for="inputState">Industry</label>
-                                            <select id="inputState" class="form-control">
+                                            <label for="industry">Industry</label>
+                                            <select id="industry" class="form-control" name="industry">
                                                 <option selected>Choose...</option>
                                                 <option>Healthcare</option>
                                                 <option>Sales</option>
@@ -87,18 +83,18 @@
                                             </select>
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label for="inputZip">Doses Taken</label>
-                                            <input type="number" class="form-control" id="inputZip">
+                                            <label for="dosesTaken">Doses Taken</label>
+                                            <input type="number" class="form-control" id="dosesTaken" name="dosesTaken" required>
                                         </div>
                                         <div class="form-group col-md-5">
-                                            <label for="inputPassword4">Person of Determination</label>
+                                            <label for="determination">Person of Determination</label>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                <label class="form-check-label" for="inlineCheckbox1">True</label>
+                                                <input class="form-check-input" type="checkbox" id="determination" value="true">
+                                                <label class="form-check-label" for="determination">True</label>
                                             </div>
                                         </div>
                                     </div>
-                                <input name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Create Account">
+                                <button class="btn btn-block login-btn mb-4" type="submit">Create Account</button>
                             </form>
                         </div>
                     </div>
