@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block head_title %} Patient | {{block.super}}{% endblock head_title %}
+
+{#insert additional stylings#}
+{% block stylings %}
+    {% load static %}
+    <link href="{% static 'templates/css/register.css' %}" rel="stylesheet">
+{% endblock stylings %}
+
+{% block content%}
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+            <div class="card login-card">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/static/templates/img/women-getting-vaccine.jpg" alt="login" class="login-card-img">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="brand-wrapper">
+                                <h2>Vaccine Booking Management</h2>
+                                {#                                <img src="/logo-black.png" alt="logo" class="logo">#}
+                            </div>
+                            <p class="login-card-description">Create new Account</p>
+                            <form action="#!">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Full Name</label>
+                                        <input type="text" class="form-control" id="inputEmail4" placeholder="John Doe">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Phone no</label>
+                                        <input type="text" class="form-control" id="inputPassword4" placeholder="050 xxx xxxx">
+                                    </div>
+                                </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Email</label>
+                                            <input type="email" class="form-control" id="inputEmail4" placeholder="name@example.com">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Password</label>
+                                            <input type="password" class="form-control" id="inputPassword4" placeholder="******">
+                                        </div>
+                                    </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Date of Birth</label>
+                                        <input type="date" class="form-control" id="inputEmail4" placeholder="21/03/2002">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Gender</label>
+                                        <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">M</label>
+                                        </div>
+                                        <div class=" form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">F</label>
+                                        </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">Emirates ID</label>
+                                        <input type="text" class="form-control" id="inputAddress" placeholder="xxx xxxx xxxx xx">
+                                    </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Longitude</label>
+                                        <input type="number" class="form-control" id="inputEmail4" placeholder="34.67">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Latitude</label>
+                                        <input type="number" class="form-control" id="inputPassword4" placeholder="25.6">
+                                    </div>
+                                </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="inputState">Industry</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>Healthcare</option>
+                                                <option>Sales</option>
+                                                <option>Education</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputZip">Doses Taken</label>
+                                            <input type="number" class="form-control" id="inputZip">
+                                        </div>
+                                        <div class="form-group col-md-5">
+                                            <label for="inputPassword4">Person of Determination</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                                <label class="form-check-label" for="inlineCheckbox1">True</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <input name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Create Account">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
