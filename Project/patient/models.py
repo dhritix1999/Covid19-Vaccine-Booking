@@ -10,10 +10,10 @@ class Patient(models.Model):
     password = models.CharField(max_length=100)
     dateOfBirth = models.DateField()
     gender = models.CharField(max_length=6)
-    emiratesID = models.IntegerField()
+    emiratesID = models.CharField(max_length=15)
     industry = models.CharField(max_length=100)
-    locationLat = models.FloatField()
-    locationLng = models.FloatField()
+    locationLat = models.FloatField(default=0)
+    locationLng = models.FloatField(default=0)
     determination = models.BooleanField(default=False)
     dosesTaken = models.IntegerField(default=0)
 

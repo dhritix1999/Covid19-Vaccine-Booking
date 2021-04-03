@@ -19,7 +19,7 @@ from .models import Patient
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = ('email', 'name', 'gender')
+        fields = '__all__'
 
     # def create(self, validated_data):
     #     return Patient.objects.create(validated_data)
