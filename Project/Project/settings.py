@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'patient'
+    'patient',
+    'vaccineCenterApp.apps.VaccinecenterappConfig'
 ]
 
 MIDDLEWARE = [
