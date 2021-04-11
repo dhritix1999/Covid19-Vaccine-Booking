@@ -1,8 +1,8 @@
 from django.db import models
 
-
-
 # Create your models here.
+
+#Patient model
 class Patient(models.Model):
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=15, unique=True)
@@ -16,6 +16,15 @@ class Patient(models.Model):
     locationLng = models.FloatField(default=0)
     determination = models.BooleanField(default=False)
     dosesTaken = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.email
+
+#Admin model
+class Admin(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=100)
 
     def __str__(self):
         return self.email

@@ -1,6 +1,17 @@
 from rest_framework import serializers
-from .models import Patient
+from .models import Patient, Admin
 
+
+class PatientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Patient
+        fields = '__all__'
+
+
+class AdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Admin
+        fields = '__all__'
 
 # class PatientSerializer(serializers.Serializer):
 #     name = serializers.CharField(max_length=100)
@@ -16,13 +27,9 @@ from .models import Patient
 #     determination = serializers.BooleanField(default=False)
 #     dosesTaken = serializers.IntegerField(default=0, max=2)
 
-class PatientSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Patient
-        fields = '__all__'
 
-    # def create(self, validated_data):
-    #     return Patient.objects.create(validated_data)
-    #
-    # def update(self, instance, validated_data):
-    #     instance.email = validated_data.get('email', instance.email)
+# def create(self, validated_data):
+#     return Patient.objects.create(validated_data)
+#
+# def update(self, instance, validated_data):
+#     instance.email = validated_data.get('email', instance.email)
