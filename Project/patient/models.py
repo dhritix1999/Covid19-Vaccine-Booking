@@ -19,3 +19,10 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.email
+
+class MedicalIssue(models.Model):
+    name = models.CharField(max_length=100)
+    vaccineEligibility = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
