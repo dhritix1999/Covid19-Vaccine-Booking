@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'patient',
-    'vaccineCenterApp.apps.VaccinecenterappConfig'
+    'vaccineCenterApp.apps.VaccinecenterappConfig',
+    'bookingApp.apps.BookingappConfig',
+
 ]
 
 MIDDLEWARE = [
