@@ -40,5 +40,4 @@ Project/Project.iml
 # PyBuilder
 target/
 
-
-
+.venv/

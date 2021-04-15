@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'patient',
+    'clientApp.apps.ClientConfig',
+    'profileApp.apps.ProfileConfig',
     'vaccineCenterApp.apps.VaccinecenterappConfig',
     'bookingApp.apps.BookingappConfig',
 
