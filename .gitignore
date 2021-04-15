@@ -40,4 +40,5 @@ Project/Project.iml
 # PyBuilder
 target/
 
-.venv/
+#virtual environment
+venv/
