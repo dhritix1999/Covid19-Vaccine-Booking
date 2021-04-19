@@ -7,9 +7,10 @@
 
     <title>{% block head_title %}ADHS{% endblock head_title %}</title>
 
-    <!-- Jquery -->
+    <!-- Jquery and ajax -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -22,12 +23,12 @@
 </head>
 <body>
 
-<div id="page-container" style="position: relative;">
+{#<div id="page-container" style="position: relative;">#}
 
     {% block content %}
 
     {% endblock content %}
-</div>
+{#</div>#}
 
 
 <!-- Bootstrap JavaScript -->
@@ -39,13 +40,5 @@
 {% endblock script %}
 
 </body>
-<footer id="footer" class="py-4 bg-dark text-white-50" style="
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   text-align: center;">
-    <div class="container text-center">
-        <p>Copyright &copy; aus.edu</p>
-    </div>
-</footer>
+
 </html>
