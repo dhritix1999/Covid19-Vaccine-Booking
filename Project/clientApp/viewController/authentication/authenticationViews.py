@@ -6,3 +6,7 @@ from django.shortcuts import render
 # index page
 def index(request):
     return render(request, 'index.html')
+
+
+def patient_register(request):
+    return render(request, 'authentication/patient-register.html')
