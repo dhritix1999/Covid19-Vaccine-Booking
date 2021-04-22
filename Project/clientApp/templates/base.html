@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" style="margin: 0; height: 100%;">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block head_title %}ADHS{% endblock head_title %}</title>
+
+    <!-- Jquery and ajax -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          crossorigin="anonymous">
+
+    <!-- Optional Stylings -->
+    {% block stylings %}
+
+    {% endblock stylings %}
+</head>
+<body>
+
+{#<div id="page-container" style="position: relative;">#}
+
+    {% block content %}
+
+    {% endblock content %}
+{#</div>#}
+
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+<!-- Optional Scripts -->
+{% block script %}
+
+{% endblock script %}
+
+</body>
+
+</html>

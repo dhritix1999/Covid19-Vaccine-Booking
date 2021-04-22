@@ -12,14 +12,14 @@ from bookingApp.serializers import BookingSlotSerializer
 @api_view(['GET', 'POST'])
 def booking_slot_without_id(request):
     """
-    Retrieve all patients or create new patient
+    Retrieve all patients or create new profileApp
     """
-    if request.method == 'GET':  # patient requesting data
+    if request.method == 'GET':  # profileApp requesting data
         bookingSlots = BookingSlot.objects.all()
         serializer = BookingSlotSerializer(bookingSlots, many=True)
         return Response(serializer.data)
 
-    elif request.method == 'POST':  # patient creating data
+    elif request.method == 'POST':  # profileApp creating data
         serializer = BookingSlotSerializer(data=request.data)
 
         if serializer.is_valid():
@@ -31,7 +31,7 @@ def booking_slot_without_id(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def booking_slot_with_id(request, pk):
     """
-    Retrieve, update or delete a patient by id.
+    Retrieve, update or delete a profileApp by id.
     """
     try:
         bookingSlot = BookingSlot.objects.get(pk=pk)

@@ -12,14 +12,14 @@ from vaccineCenterApp.serializers import VaccineCenterSerializer
 @api_view(['GET', 'POST'])
 def vaccine_center_without_id(request):
     """
-    Retrieve all patients or create new patient
+    Retrieve all patients or create new profileApp
     """
-    if request.method == 'GET':  # patient requesting data
+    if request.method == 'GET':  # profileApp requesting data
         vaccineCenters = VaccineCenter.objects.all()
         serializer = VaccineCenterSerializer(vaccineCenters, many=True)
         return Response(serializer.data)
 
-    elif request.method == 'POST':  # patient creating data
+    elif request.method == 'POST':  # profileApp creating data
         serializer = VaccineCenterSerializer(data=request.data)
 
         if serializer.is_valid():
@@ -31,7 +31,7 @@ def vaccine_center_without_id(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def vaccine_center_with_id(request, pk):
     """
-    Retrieve, update or delete a patient by id.
+    Retrieve, update or delete a profileApp by id.
     """
     try:
         vaccineCenter = VaccineCenter.objects.get(pk=pk)
