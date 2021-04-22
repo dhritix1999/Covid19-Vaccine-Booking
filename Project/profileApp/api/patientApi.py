@@ -1,9 +1,9 @@
 import json
-from profileApp.models import Patient
+from profileApp.models import Patient, MedicalIssue
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from profileApp.serializers import PatientSerializer, PatientLoginSerializer
+from profileApp.serializers import PatientSerializer, PatientLoginSerializer, MedicalIssueSerializer
 
 
 @api_view(['POST'])
@@ -65,3 +65,54 @@ def patient_with_id(request, pk):
     elif request.method == 'DELETE':
         patient.delete()
         return Response(status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def patients_medical_issues_without_id(request, pk):
+
+    try:
+        patient = Patient.objects.get(pk=pk)
+    except Patient.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':  # profileApp requesting data
+        medicalIssues = patient.patientMedicalIssues.all()
+        serializer = MedicalIssueSerializer(medicalIssues, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET', 'POST', 'DELETE'])
+def patients_medical_issues_with_id(request, patient_pk, medical_issue_pk):
+    """
+    Retrieve, update or delete a profileApp by id.
+    """
+    try:
+        patient = Patient.objects.get(pk=patient_pk)
+    except Patient.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        try:
+            medicalIssue = patient.patientMedicalIssues.get(id=medical_issue_pk)
+            serializer = MedicalIssueSerializer(medicalIssue)
+            return Response(serializer.data)
+        except MedicalIssue.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+    elif request.method == 'POST':
+        try:
+            unboundMedicalIssue = MedicalIssue.objects.get(id=medical_issue_pk)
+            patient.patientMedicalIssues.add(unboundMedicalIssue)
+            return Response(status=status.HTTP_200_OK)
+        except MedicalIssue.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+    elif request.method == 'DELETE':
+        try:
+            medicalIssue = patient.patientMedicalIssues.get(id=medical_issue_pk)
+            patient.patientMedicalIssues.remove(medicalIssue)
+            return Response(status=status.HTTP_200_OK)
+        except MedicalIssue.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)

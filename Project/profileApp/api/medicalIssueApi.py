@@ -50,3 +50,5 @@ def medical_issue_with_id(request, pk):
     elif request.method == 'DELETE':
         medicalIssue.delete()
         return Response(status=status.HTTP_200_OK)
+
+
