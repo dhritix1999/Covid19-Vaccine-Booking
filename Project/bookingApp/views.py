@@ -5,8 +5,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 
-from bookingApp.models import BookingSlot
-from bookingApp.serializers import BookingSlotSerializer
+from bookingApp.models import BookingSlot, Booking
+from bookingApp.serializers import BookingSlotSerializer, BookingSerializer
 
 
 @api_view(['GET', 'POST'])
@@ -52,3 +52,45 @@ def booking_slot_with_id(request, pk):
     elif request.method == 'DELETE':
         bookingSlot.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])
+def patient_booking_slot_without_id(request, patient_pk):
+
+    if request.method == 'GET':  # profileApp requesting data
+        bookings = Booking.objects.filter(patientID=patient_pk)
+        serializer = BookingSerializer(bookings, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET', 'POST', 'DELETE'])
+def patient_booking_slot_with_id(request, patient_pk, booking_slot_pk):
+    """
+    Retrieve, update or delete a profileApp by id.
+    """
+    try:
+        # Just check for existency of booking slot (cannot do for patient, diff microservice)
+        _ = BookingSlot.objects.get(id=booking_slot_pk)
+    except BookingSlot.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        try:
+            booking = Booking.objects.get(bookingSlotID=booking_slot_pk, patientID=patient_pk)
+            serializer = BookingSerializer(booking)
+            return Response(serializer.data)
+        except Booking.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    elif request.method == 'POST':
+        Booking.objects.create(bookingSlotID=booking_slot_pk, patientID=patient_pk)
+        return Response(status=status.HTTP_200_OK)
+
+
+    elif request.method == 'DELETE':
+        try:
+            booking = Booking.objects.get(bookingSlotID=booking_slot_pk, patientID=patient_pk)
+            booking.delete()
+            return Response(status=status.HTTP_200_OK)
+        except Booking.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)

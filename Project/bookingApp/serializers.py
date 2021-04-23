@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from bookingApp.models import BookingSlot
+from bookingApp.models import BookingSlot, Booking
 
 
 class BookingSlotSerializer(serializers.ModelSerializer):
@@ -8,3 +8,7 @@ class BookingSlotSerializer(serializers.ModelSerializer):
         model = BookingSlot
         fields = '__all__'
 
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
+        fields = '__all__'
