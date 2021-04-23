@@ -9,8 +9,6 @@ class MedicalIssue(models.Model):
         return self.name
 
 
-# Create your models here.
-
 # Patient model
 class Patient(models.Model):
     name = models.CharField(max_length=100)
@@ -39,3 +37,13 @@ class Admin(models.Model):
 
     def __str__(self):
         return self.email
+
+
+# Industry model
+class Industry(models.Model):
+    name = models.CharField(max_length=100)
+    priority = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+

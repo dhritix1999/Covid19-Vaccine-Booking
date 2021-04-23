@@ -1,10 +1,15 @@
 from rest_framework import serializers
-from .models import Patient, MedicalIssue, Admin
+from .models import Patient, MedicalIssue, Admin, Industry
 
 
 class MedicalIssueSerializer(serializers.ModelSerializer):
     class Meta:
         model = MedicalIssue
+        fields = '__all__'
+
+class IndustrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Industry
         fields = '__all__'
 
 
@@ -25,9 +30,6 @@ class PatientLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
         fields = ('id',)
-
-
-
 
 class AdminSerializer(serializers.ModelSerializer):
     class Meta:
