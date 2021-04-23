@@ -8,6 +8,15 @@ class MedicalIssue(models.Model):
     def __str__(self):
         return self.name
 
+# Industry model
+class Industry(models.Model):
+    name = models.CharField(max_length=100)
+    priority = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+
 
 # Patient model
 class Patient(models.Model):
@@ -18,7 +27,7 @@ class Patient(models.Model):
     dateOfBirth = models.DateField()
     gender = models.CharField(max_length=6)
     emiratesID = models.CharField(max_length=15)
-    industry = models.CharField(max_length=100)
+    industry = models.ForeignKey(Industry, on_delete=models.SET_NULL, blank=True, null=True)
     locationLat = models.FloatField(default=0)
     locationLng = models.FloatField(default=0)
     determination = models.BooleanField(default=False)
@@ -39,11 +48,4 @@ class Admin(models.Model):
         return self.email
 
 
-# Industry model
-class Industry(models.Model):
-    name = models.CharField(max_length=100)
-    priority = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.name
 
