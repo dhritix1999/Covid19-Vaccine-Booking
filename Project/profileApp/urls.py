@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .api.industryApi import industry_without_id
+from .api.industryApi import industry_without_id, industry_with_id
 from .api.patientApi import *
 from .api.adminApi import *
 from .api.medicalIssueApi import *
@@ -20,5 +20,6 @@ urlpatterns = [
     path('medical-issue/<int:pk>/', medical_issue_with_id, name='medical_issue_with_id'),
 
     path('industry/', industry_without_id, name='industry_without_id'),
+    path('industry/<int:pk>/', industry_with_id, name='industry_with_id'),
 
 ]
