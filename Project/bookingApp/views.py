@@ -63,6 +63,14 @@ def patient_booking_slot_without_id(request, patient_pk):
         return Response(serializer.data)
 
 
+@api_view(['GET'])
+def booking_slot_patient_without_id(request, booking_slot_pk):
+
+    if request.method == 'GET':  # profileApp requesting data
+        bookings = Booking.objects.filter(bookingSlotID=booking_slot_pk)
+        serializer = BookingSerializer(bookings, many=True)
+        return Response(serializer.data)
+
 @api_view(['GET', 'POST', 'DELETE'])
 def patient_booking_slot_with_id(request, patient_pk, booking_slot_pk):
     """
