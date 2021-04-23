@@ -14,8 +14,9 @@ class IndustrySerializer(serializers.ModelSerializer):
 
 
 class PatientSerializer(serializers.ModelSerializer):
-    patientMedicalIssues = serializers.PrimaryKeyRelatedField(many=True, allow_null=True, queryset=MedicalIssue.objects.all())
-
+    # patientMedicalIssues = serializers.PrimaryKeyRelatedField(many=True, allow_null=True, queryset=MedicalIssue.objects.all())
+    patientMedicalIssues = MedicalIssueSerializer(many=True, read_only=True)
+    
     class Meta:
         model = Patient
         fields = '__all__'
