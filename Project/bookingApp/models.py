@@ -9,3 +9,10 @@ class BookingSlot(models.Model):
 
     def __str__(self):
         return self.timeSlot
+
+class Booking(models.Model):
+    bookingSlotID = models.IntegerField()
+    patientID = models.IntegerField()
+
+    def __str__(self):
+        return str(self.bookingSlotID) + ' - ' + str(self.patientID)

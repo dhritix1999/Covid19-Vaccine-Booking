@@ -1,24 +1,23 @@
-from profileApp.models import MedicalIssue
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from profileApp.serializers import MedicalIssueSerializer
 
+from profileApp.models import Industry
+from profileApp.serializers import IndustrySerializer
 
-# Medical Issues
 
 @api_view(['GET', 'POST'])
-def medical_issue_without_id(request):
+def industry_without_id(request):
     """
-    Retrieve all patients or create new profileApp
+    Retrieve all industries or create new one
     """
     if request.method == 'GET':  # profileApp requesting data
-        medicalIssue = MedicalIssue.objects.all()
-        serializer = MedicalIssueSerializer(medicalIssue, many=True)
+        industry = Industry.objects.all()
+        serializer = IndustrySerializer(industry, many=True)
         return Response(serializer.data)
 
     elif request.method == 'POST':  # profileApp creating data
-        serializer = MedicalIssueSerializer(data=request.data)
+        serializer = IndustrySerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -26,29 +25,30 @@ def medical_issue_without_id(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+
 @api_view(['GET', 'PUT', 'DELETE'])
-def medical_issue_with_id(request, pk):
+def industry_with_id(request, pk):
     """
     Retrieve, update or delete a profileApp by id.
     """
     try:
-        medicalIssue = MedicalIssue.objects.get(pk=pk)
-    except MedicalIssue.DoesNotExist:
+        industry = Industry.objects.get(pk=pk)
+    except Industry.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = MedicalIssueSerializer(medicalIssue)
+        serializer = IndustrySerializer(industry)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = MedicalIssueSerializer(medicalIssue, data=request.data)
+        serializer = IndustrySerializer(industry, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        medicalIssue.delete()
+        industry.delete()
         return Response(status=status.HTTP_200_OK)
 
 
