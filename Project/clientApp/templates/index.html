@@ -3,8 +3,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | ADHS</title>
-
-
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 {% load static%}
 <link href="{% static 'templates/css/index.css' %}" rel="stylesheet">
 
@@ -13,7 +14,7 @@
   <h2>Vaccine Booking Portal</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form id="adminForm" action="/api/admin/login"  method="POST">
+		<form id="adminForm" action="/api/admin/login/"  method="POST">
 			<h1>Admin Sign in</h1>
 			<div class="social-container">
 			</div>
@@ -24,7 +25,7 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form id="patientForm" action="/api/patient/login"  method="POST">
+		<form id="patientForm" action="/api/patient/login/"  method="POST">
 			<h1>Patient Sign in</h1>
 			<div class="social-container">
 
@@ -47,8 +48,10 @@
 	</div>
 </div>
 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  {% load static%}
   <script type="text/javascript" src="{% static 'templates/js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'templates/js/main.js' %}"></script>
 </body>
 </html>
 

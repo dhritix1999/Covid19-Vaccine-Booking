@@ -9,4 +9,12 @@ def index(request):
 
 
 def patient_register(request):
-    return render(request, 'authentication/patient-register.html')
+    return render(request, 'patient/register.html')
+
+
+def admin_homepage(request):
+    return render(request, 'admin/homepage.html')
+
+
+def patient_homepage(request):
+    return render(request, 'patient/homepage.html')
