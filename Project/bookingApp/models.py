@@ -8,7 +8,7 @@ class BookingSlot(models.Model):
     bookingCount = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.timeSlot
+        return str(self.timeSlot)
 
 class Booking(models.Model):
     bookingSlotID = models.IntegerField()
