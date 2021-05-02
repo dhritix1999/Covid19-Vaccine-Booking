@@ -7,7 +7,9 @@ from rest_framework.response import Response
 
 from vaccineCenterApp.models import VaccineCenter
 from vaccineCenterApp.serializers import VaccineCenterSerializer
-
+import requests
+import json
+import math
 
 @api_view(['GET', 'POST'])
 def vaccine_center_without_id(request):
@@ -52,3 +54,35 @@ def vaccine_center_with_id(request, pk):
     elif request.method == 'DELETE':
         vaccineCenter.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+@api_view(['GET'])
+def patient_possible_vaccine_centers(request, patient_pk):
+    """
+    Get all vaccine centers for a given patient to possibly book at
+    """
+    if request.method == 'GET':
+        isPriority = request.query_params.get('is_priority') == 'true'
+
+        # Get patient info from Patients Microservice
+        r=requests.get(f'http://127.0.0.1:8000/api/patient/{patient_pk}/')
+
+        if r.status_code >= 400:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        patient = r.json()
+
+        # Non-priority patients can only book if doses < 100, all patients need > 0
+        if isPriority:
+            centers = VaccineCenter.objects.filter(dosesStock__gt=0)
+        else:
+            centers = VaccineCenter.objects.filter(dosesStock__gt=100)
+
+        # Sort the vaccine centers based on distance from user
+        centers = list(centers)
+        centers.sort(key=lambda x: math.sqrt((patient['locationLat'] - x.locationLat)**2 + (patient['locationLng'] - x.locationLng)**2))
+
+        serializer = VaccineCenterSerializer(centers, many=True)
+        return Response(serializer.data)

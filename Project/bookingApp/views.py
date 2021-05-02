@@ -1,3 +1,6 @@
+import datetime
+
+import requests
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from rest_framework import status
@@ -56,7 +59,9 @@ def booking_slot_with_id(request, pk):
 
 @api_view(['GET'])
 def patient_booking_slot_without_id(request, patient_pk):
-
+    """
+        Get all bookings of patient
+    """
     if request.method == 'GET':  # profileApp requesting data
         bookings = Booking.objects.filter(patientID=patient_pk)
         serializer = BookingSerializer(bookings, many=True)
@@ -65,7 +70,9 @@ def patient_booking_slot_without_id(request, patient_pk):
 
 @api_view(['GET'])
 def booking_slot_patient_without_id(request, booking_slot_pk):
-
+    """
+        Get all patients of booking slot
+    """
     if request.method == 'GET':  # profileApp requesting data
         bookings = Booking.objects.filter(bookingSlotID=booking_slot_pk)
         serializer = BookingSerializer(bookings, many=True)
@@ -74,7 +81,7 @@ def booking_slot_patient_without_id(request, booking_slot_pk):
 @api_view(['GET', 'POST', 'DELETE'])
 def patient_booking_slot_with_id(request, patient_pk, booking_slot_pk):
     """
-    Retrieve, update or delete a profileApp by id.
+    Retrieve, update or delete a booking slot of patient
     """
     try:
         # Just check for existency of booking slot (cannot do for patient, diff microservice)
@@ -102,3 +109,38 @@ def patient_booking_slot_with_id(request, patient_pk, booking_slot_pk):
             return Response(status=status.HTTP_200_OK)
         except Booking.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+
+@api_view(['GET'])
+def vaccine_center_bookings(request, vaccine_center_pk):
+    """
+    Get all available/unavailable booking slots for a vaccine center
+    query_params = "is_available": true or false
+    """
+    if request.method == 'GET':
+        isAvailable = request.query_params.get('is_available') == 'true'
+
+        # Get vaccine center info from VaccineCenter Microservice
+        r=requests.get(f'http://127.0.0.1:8000/api/vaccine-center/{vaccine_center_pk}')
+
+        if r.status_code >= 400:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        vaccineCenter = r.json()
+
+        # Filter slots within the next 3 days
+        # Filter slots below capacity / at capacity depending on isAvailable or not
+        if isAvailable:
+            slots = BookingSlot.objects.filter(
+                timeSlot__range=(datetime.datetime.now(), datetime.datetime.now() + datetime.timedelta(days=3)),
+                bookingCount__lt=vaccineCenter['dosesPerHour']
+            )
+        else:
+            slots = BookingSlot.objects.filter(
+                timeSlot__range=(datetime.datetime.now(), datetime.datetime.now() + datetime.timedelta(days=3)),
+                bookingCount__gte=vaccineCenter['dosesPerHour']
+            )
+
+        serializer = BookingSlotSerializer(slots, many=True)
+        return Response(serializer.data)
