@@ -39,7 +39,7 @@ function indexFormSubmit(form, redirectUrl = null, getFormData = convertFormToJS
                     document.cookie = "patient="+data.id
                     window.location = redirectUrl;
                 }
-                else if (redirectUrl == '/admin'){
+                else if (redirectUrl == '/admins'){
                     document.cookie = "admin="+data.id
                       window.location = redirectUrl;
                 }

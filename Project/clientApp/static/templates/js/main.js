@@ -1,8 +1,11 @@
 
 
 /**
- Convert Form to Json format
- **/
+ *  Convert form to JSON format
+ *
+ * @param form object
+ * @return JSON.stringify(form)
+ * */
 function convertFormToJSONString(form){
     var array = $(form).serializeArray();
     var json = {};
@@ -16,8 +19,12 @@ function convertFormToJSONString(form){
 }
 
 /**
- sample ajax delete
- **/
+ *  Delete row in a table
+ *
+ * @param url of DELETE api
+ * @param tag id of the table row
+ * @param tableTag the id of the table
+ * */
 function deleteEntity(url, tag, tableTag = 'dataTable'){
 
     $.ajax({
@@ -43,8 +50,14 @@ function deleteEntity(url, tag, tableTag = 'dataTable'){
 }
 
 /**
- sample ajax form handling
- **/
+ *  Submits a form
+ *
+ * @param form object
+ * @param formReset true if you want the form to be cleared out
+ * @param successMessage what the alert message should display
+ * @param getFormData getting the form data in json format
+ * @param redirectUrl redirection url after form submission
+ * */
 function formSubmit(form, formReset, successMessage, getFormData = convertFormToJSONString, redirectUrl = null) {
 
     form.submit(function (e) {
@@ -85,6 +98,22 @@ function formSubmit(form, formReset, successMessage, getFormData = convertFormTo
     });
 }
 
-function setCookie(userType, id){
+/**
+ * @param url of the GET api
+ * @returns data of the ajax get
+ * */
+function getDataFromUrl(url){
+     $.ajax({
+            contentType: "application/json",
+            type: 'GET',
+            url: url,
+            success: function (data) {
 
+                return data
+            },
+            error: function (data) {
+
+                return 'error'
+            },
+        });
 }
