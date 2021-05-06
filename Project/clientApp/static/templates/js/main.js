@@ -1,20 +1,19 @@
-
-
 /**
  *  Convert form to JSON format
  *
  * @param form object
  * @return JSON.stringify(form)
  * */
-function convertFormToJSONString(form){
+function convertFormToJSONString(form) {
     var array = $(form).serializeArray();
     var json = {};
 
-    jQuery.each(array, function() {
+    jQuery.each(array, function () {
         json[this.name] = this.value || '';
     });
 
-    return  JSON.stringify(json);
+    console.log(JSON.stringify(json))
+    return JSON.stringify(json);
 
 }
 
@@ -25,7 +24,7 @@ function convertFormToJSONString(form){
  * @param tag id of the table row
  * @param tableTag the id of the table
  * */
-function deleteEntity(url, tag, tableTag = 'dataTable'){
+function deleteEntity(url, tag, tableTag = 'dataTable') {
 
     $.ajax({
         type: 'DELETE',
@@ -36,7 +35,7 @@ function deleteEntity(url, tag, tableTag = 'dataTable'){
             console.log(data)
 
             // delete row
-            $('#'+tableTag).DataTable().row('#'+tag).remove().draw();
+            $('#' + tableTag).DataTable().row('#' + tag).remove().draw();
         },
         error: function (data) {
             //print to log
@@ -71,7 +70,7 @@ function formSubmit(form, formReset, successMessage, getFormData = convertFormTo
             data: getFormData(form),
             success: function (data) {
 
-                if (redirectUrl != null){
+                if (redirectUrl != null) {
                     window.location = redirectUrl;
                 }
                 // clear out the form
@@ -102,18 +101,18 @@ function formSubmit(form, formReset, successMessage, getFormData = convertFormTo
  * @param url of the GET api
  * @returns data of the ajax get
  * */
-function getDataFromUrl(url){
-     $.ajax({
-            contentType: "application/json",
-            type: 'GET',
-            url: url,
-            success: function (data) {
-
-                return data
-            },
-            error: function (data) {
-
-                return 'error'
-            },
-        });
+function getDataFromUrl(url) {
+    $.ajax({
+        type: 'GET',
+        contentType: "application/json; charset=utf-8",
+        url: url,
+        success: function (data) {
+            console.log(data)
+            return data
+        },
+        error: function (data) {
+            console.log(data)
+            return 'error'
+        },
+    });
 }
