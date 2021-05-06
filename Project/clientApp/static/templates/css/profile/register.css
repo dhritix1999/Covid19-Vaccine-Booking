@@ -21,7 +21,7 @@ body {
     -o-object-fit: cover;
     object-fit: cover; }
 .login-card .card-body {
-    padding: 85px 60px 60px; }
+    padding: 30px 30px 30px; }
 @media (max-width: 422px) {
     .login-card .card-body {
         padding: 35px 24px; } }
@@ -31,12 +31,11 @@ body {
     font-weight: normal;
     margin-bottom: 23px; }
 .login-card .form-control {
-    border: 1px solid #d5dae2;
-    margin-bottom: 20px;
-    min-height: 45px;
-    font-size: 15px;
-    line-height: 15;
-    font-weight: normal; }
+   background-color: #eee;
+    border: none;
+    padding: 0px 15px;
+    margin: 8px 0;
+    width: 100%;}
 .login-card .form-control::-webkit-input-placeholder {
     color: #919aa3; }
 .login-card .form-control::-moz-placeholder {
@@ -74,5 +73,33 @@ body {
 .login-card-footer-nav a {
     font-size: 14px;
     color: #919aa3; }
+label {
+    display: inline-block;
+    margin-bottom: 0rem;
+}
+.custom-radiolist{
+    padding: 12px 15px;
+}
+input[type=checkbox] {
+    transform: scale(1.25);
+}
+
+.selectpicker{
+    background-color: #eee;
+    border: none;
+    padding: 0px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.medical-select{
+    /* background-color: #eee; */
+    border: none;
+    padding: 0px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+
 
 /*# sourceMappingURL=index.css.map */
