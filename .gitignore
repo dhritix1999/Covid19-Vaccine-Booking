@@ -1,6 +1,8 @@
 .DS_Store
 .idea/
 Project/.idea/
+bin
+lib
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
