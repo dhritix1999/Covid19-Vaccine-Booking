@@ -10,6 +10,8 @@ urlpatterns = [
 
     path('patient/booking/list', patientViews.allowed_bookings),
 
+    path('admins/industry', authenticationViews.admin_industry),
+
 
 
 ]
