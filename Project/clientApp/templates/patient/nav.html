@@ -1,0 +1,96 @@
+{% load static %}
+<style>
+
+#navbarmain {
+  padding: 20px 0px;
+}
+
+#navbarmain .nav-link {
+  font-weight: 600;
+  padding: 10px 15px;
+  color: #222;
+  font-family: "Exo", sans-serif;
+  text-transform: capitalize;
+  font-size: 16px;
+  transition: all .25s ease;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.navbar-brand {
+  margin-top: 10px;
+}
+
+.dropdown .dropdown-menu {
+  position: absolute;
+  display: block;
+  background: #fff;
+  min-width: 240px;
+  top: 130%;
+  left: 0;
+  right: 0px;
+  opacity: 0;
+  padding: 0px;
+  visibility: hidden;
+  transition: all 0.3s ease-out 0s;
+  border: 0px;
+  border-top: 5px solid #e12454;
+  border-radius: 0px;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  top: 115%;
+}
+
+.dropdown .dropdown-item {
+  padding: 13px 20px;
+  border-bottom: 1px solid #eee;
+  background: transparent;
+  font-weight: 400;
+  color: #555;
+}
+
+.dropdown .dropdown-item:hover {
+  color: #e12454;
+}
+</style>
+<header>
+	<nav class="navbar navbar-expand-lg navigation" id="navbar">
+		<div class="container">
+		  <div class="collapse navbar-collapse" id="navbarmain">
+			<ul class="navbar-nav">
+			  <li class="nav-item active">
+				<a class="nav-link" href="index.html">Home</a>
+			  </li>
+			   <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+			    <li class="nav-item"><a class="nav-link" href="service.html">Booking</a></li>
+				<li class="nav-item"><a class="nav-link" href="service.html">History</a></li>
+
+
+			  	<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
+					<ul class="dropdown-menu" aria-labelledby="dropdown03">
+						<li><a class="dropdown-item" href="doctor.html">Doctors</a></li>
+						<li><a class="dropdown-item" href="doctor-single.html">Doctor Single</a></li>
+						<li><a class="dropdown-item" href="appoinment.html">Appoinment</a></li>
+					</ul>
+			  	</li>
+			</ul>
+
+			<ul class="navbar-nav ml-auto">
+					<li class="nav-item dropdown">
+					  <a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, Patient <i class="icofont-thin-down"></i></a>
+					  <ul class="dropdown-menu" aria-labelledby="dropdown03">
+						  <li><a class="dropdown-item" href="doctor.html">View Profile</a></li>
+						  <li><a class="dropdown-item" href="doctor-single.html">Logout</a></li>
+					  </ul>
+					</li>
+			  </ul>
+		  </div>
+		</div>
+	</nav>
+</header>
