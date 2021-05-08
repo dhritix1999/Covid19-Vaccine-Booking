@@ -1,4 +1,33 @@
 /**
+ Bootstrap Alerts -
+ Function Name - showalert()
+ Inputs - message,alerttype
+ Example - showalert("Invalid Login","alert-error")
+ Types of alerts -- "alert-error","alert-success","alert-info","alert-warning"
+ Required - You only need to add a alert_placeholder div in your html page wherever you want to display these alerts "<div id="alert_placeholder"></div>"
+ Written On - 14-Jun-2013
+ **/
+function showalert(message,alerttype) {
+
+    $('#alert_placeholder').append('<div id="alertdiv" class="alert ' +  alerttype + '"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+    setTimeout(function() { // this will automatically close the alert and remove this if the locations doesnt close it in 5 secs
+        $("#alertdiv").remove();
+    }, 5000);
+}
+
+/**
+ Use this whenever we need to output error from JSONResponse
+ **/
+function errorAlert(message){
+    if (message == null){
+        showalert("An Error Occurred, Try Again", "alert-danger");
+    }
+    else{
+        showalert(message, "alert-danger");
+    }
+}
+
+/**
  *  Convert form to JSON format
  *
  * @param form object
@@ -16,6 +45,8 @@ function convertFormToJSONString(form) {
     return JSON.stringify(json);
 
 }
+
+
 
 /**
  *  Delete row in a table
@@ -57,7 +88,7 @@ function deleteEntity(url, tag, tableTag = 'dataTable') {
  * @param getFormData getting the form data in json format
  * @param redirectUrl redirection url after form submission
  * */
-function formSubmit(form, formReset, successMessage, getFormData = convertFormToJSONString, redirectUrl = null) {
+function formSubmit(form, formReset, successMessage, getFormData = convertFormToJSONString, redirectUrl = null, sessionMessage = null) {
 
     form.submit(function (e) {
         e.preventDefault();
@@ -70,7 +101,11 @@ function formSubmit(form, formReset, successMessage, getFormData = convertFormTo
             data: getFormData(form),
             success: function (data) {
 
+                showalert(successMessage, "alert-success");
+
                 if (redirectUrl != null) {
+                    if (sessionMessage != null)
+                        sessionStorage.setItem("message", sessionMessage);
                     window.location = redirectUrl;
                 }
                 // clear out the form
@@ -79,8 +114,6 @@ function formSubmit(form, formReset, successMessage, getFormData = convertFormTo
                 // print to log
                 console.log('Submission was successful.');
                 console.log(data)
-
-                showalert(successMessage, "alert-success");
             },
             error: function (data) {
                 //clear out the form
@@ -91,7 +124,10 @@ function formSubmit(form, formReset, successMessage, getFormData = convertFormTo
                 console.log(data);
 
                 //alert
-                errorAlert(data.responseJSON.message)
+                for (x in data.responseJSON){
+                    errorAlert(data.responseJSON[x])
+                }
+
             },
         });
     });
