@@ -8,14 +8,31 @@ $(document).ready(function () {
     loadIndustries('/api/industry/')
 
     //get medical problems
-     $("#patientMedicalIssues").empty()
+    $("#patientMedicalIssues").empty()
     loadMedicalIssues('/api/medical-issue/')
 
     //register form
     const patientForm = $("#form");
 
     //form submission
-    formSubmit(patientForm, false, 'Patient registered successfully', convertFormToJSONString, '/')
+    formSubmit(patientForm, true, 'Patient registered successfully', (form) => {
+
+        return JSON.stringify({
+            "email": $('#email').val(),
+            "name": $('#name').val(),
+            "gender": $('input[name="gender"]:checked').val(),
+            "phone": $('#phone').val(),
+            "password": $('#password').val(),
+            "dateOfBirth": $('#dateOfBirth').val(),
+            "emiratesID": $('#emiratesID').val(),
+            "industry": $('#industry').val(),
+            "locationLat": $('#locationLat').val(),
+            "locationLng": $('#locationLng').val(),
+            "determination": $('input[name="determination"]:checked').val(),
+            "dosesTaken": $('#dosesTaken').val(),
+            "patientMedicalIssues": $('#patientMedicalIssues').val(),
+        });
+    })
 });
 
 function loadIndustries(url) {
@@ -26,8 +43,7 @@ function loadIndustries(url) {
         success: function (data) {
             console.log(data)
             for (var i = 0; i < data.length; i++) {
-                var value = data[i].name;
-                $("#industry").append("<option value='" + value + "'>" + value + "</option>");
+                $("#industry").append("<option value='" + data[i].id + "'>" + data[i].name + "</option>");
             }
         },
         error: function (data) {
@@ -36,18 +52,17 @@ function loadIndustries(url) {
     });
 }
 
-function loadMedicalIssues(url){
-       $.ajax({
+function loadMedicalIssues(url) {
+    $.ajax({
         type: 'GET',
         contentType: "application/json; charset=utf-8",
         url: url,
         success: function (data) {
             console.log(data)
             for (var i = 0; i < data.length; i++) {
-                var value = data[i].name;
-                $("#patientMedicalIssues").append("<option value='" + value + "'>" + value + "</option>");
+                $("#patientMedicalIssues").append("<option value='" + data[i].id + "'>" + data[i].name + "</option>");
             }
-             $('.selectpicker').selectpicker('refresh');
+            $('.selectpicker').selectpicker('refresh');
         },
         error: function (data) {
             console.log(data)
