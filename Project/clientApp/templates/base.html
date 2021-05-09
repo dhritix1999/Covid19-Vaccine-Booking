@@ -13,14 +13,15 @@
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    {% load static %}
-    <link href="{% static 'templates/css/main.css' %}" rel="stylesheet">
-
     <!-- Optional Stylings -->
     {% block stylings %}
 
     {% endblock stylings %}
+
+
+    <!-- Custom CSS -->
+    {% load static %}
+    <link href="{% static 'templates/css/main.css' %}" rel="stylesheet">
 </head>
 <body>
 
