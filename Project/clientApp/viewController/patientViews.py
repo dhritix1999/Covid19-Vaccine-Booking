@@ -17,8 +17,10 @@ def booking_history(request):
 
 
 def view_profile(request):
-    return render(request, 'patient/profile/view-profile.html')
+    context = {"edit_profile": False}
+    return render(request, 'patient/profile/view-profile.html', context)
 
 
 def update_profile(request):
-    return render(request, 'patient/profile/edit-profile.html')
+    context = {"edit_profile": True}
+    return render(request, 'patient/profile/edit-profile.html', context)
