@@ -25,7 +25,26 @@ $(document).ready(function () {
         // user form
         const patientForm = $("#form");
 
-        //get user data and populate form
+        patientForm.attr('action', '/api/patient/'+patient_id+'/')
+        //update user form submission
+        formSubmit(patientForm, false, 'Patient updated successfully', (form) => {
+
+        return JSON.stringify({
+            "email": $('#email').val(),
+            "name": $('#name').val(),
+            "gender": $('input[name="gender"]:checked').val(),
+            "phone": $('#phone').val(),
+            "password": $('#password').val(),
+            "dateOfBirth": $('#dateOfBirth').val(),
+            "emiratesID": $('#emiratesID').val(),
+            "industry": $('#industry').val(),
+            "locationLat": $('#locationLat').val(),
+            "locationLng": $('#locationLng').val(),
+            "determination": $('input[name="determination"]:checked').val(),
+            "dosesTaken": $('#dosesTaken').val(),
+            "patientMedicalIssues": $('#patientMedicalIssues').val(),
+        });
+    })
 
     }
 })
@@ -45,6 +64,7 @@ function loadUserDetails(url) {
             $('#name').val(data.name)
             $('#gender').val(data.gender)
             $('#phone').val(data.phone)
+            $('#password').val(data.password)
             $('#dateOfBirth').val(data.dateOfBirth)
             $('#emiratesID').val(data.emiratesID)
             $('#industry').val(data.industry)

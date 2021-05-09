@@ -5,7 +5,7 @@
 {% block stylings %}
     {% load static %}
     <link href="{% static 'templates/css/form-stylings.css' %}" rel="stylesheet">
-        <link rel="stylesheet"
+    <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css"
           integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg=="
           crossorigin="anonymous"/>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <hr style="border-top: 5px solid #e12454;">
-            <form id="form" action="/api/patient/" method="PUT">
+            <form id="form" method="PUT">
                 <div id="alert_placeholder"></div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -41,25 +41,41 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" id="email" name="email"
+                        <input type="email" class="form-control" id="email" name="email"
                                placeholder="name@example.com" required {% if view_profile %} readonly {% endif %}>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="emiratesID">Emirates ID</label>
-                        <input type="number" class="form-control" id="emiratesID" name="emiratesID"
-                               placeholder="xxxxxxx" required {% if view_profile %} readonly {% endif %}>
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="***********" required {% if view_profile %} readonly {% endif %}>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="dateOfBirth">Date of Birth</label>
-                        <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" required {% if view_profile %} readonly {% endif %}>
+                        <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required
+                                {% if view_profile %} readonly {% endif %}>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="gender">Gender</label>
-                        <input type="text" class="form-control" id="gender" name="gender"
-                               required {% if view_profile %} readonly {% endif %}>
+                        {% if view_profile %}
+                            <input type="text" class="form-control" id="gender" name="gender"
+                                   required readonly>
+                        {% else %}
+                            <div class="form control custom-radiolist" id="gender">
+                                <input class="radio" type="radio" id="male" name="gender" value="Male"
+                                       checked>
+                                <label class="radio" for="male" style="padding-right: 5px">Male</label>
+                                <input class="radio" type="radio" id="female" name="gender" value="Female">
+                                <label class="radio" for="female">Female</label>
+                            </div>
+                        {% endif %}
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="emiratesID">Emirates ID</label>
+                    <input type="number" class="form-control" id="emiratesID" name="emiratesID"
+                           placeholder="xxxxxxx" required {% if view_profile %} readonly {% endif %}>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -78,7 +94,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="industry">Industry</label>
-                        <select id="industry" class="form-control" name="industry" required {% if view_profile %} readonly {% endif %}>
+                        <select id="industry" class="form-control" name="industry" required {% if view_profile %}
+                                readonly {% endif %}>
 
                         </select>
                     </div>
@@ -86,7 +103,8 @@
                         <label for="patientMedicalIssues">Medical Conditions</label>
                         <div class="medical-select">
                             <select id="patientMedicalIssues" class="selectpicker" multiple="MULTIPLE"
-                                    name="patientMedicalIssues[]" multiple data-max-options="20" {% if view_profile %} readonly {% endif %}>
+                                    name="patientMedicalIssues[]" multiple data-max-options="20" {% if view_profile %}
+                                    readonly {% endif %}>
 
                             </select>
                         </div>
@@ -100,14 +118,25 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="determination">Person of Determination</label>
-                        <input type="text" class="form-control" name="determination" id="determination"
-                               required {% if view_profile %} readonly {% endif %}>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox"
+                                   name="determination" value="true" {% if view_profile %} readonly {% endif %}>
+                            <input class="form-check-input" type="checkbox"
+                                   name="determination" value="false" checked hidden readonly>
+                            <label class="form-check-label" for="determination">True</label>
+                        </div>
                     </div>
                 </div>
                 <div class="btn-container ">
-                    <a href="patient/profile/view" class="btn btn-main-2 btn-round-full" id="cancel" hidden><i
+                    <a href="view" class="btn btn-main-2 btn-round-full" id="cancel"
+                            {% if view_profile %} hidden {% endif %}><i
                             class="material-icons button-icons">arrow_back</i><span>Cancel</span></a>
-                    <a href="patient/booking/update" class="btn btn-main btn-round-full" id="update">Edit Profile</a>
+                    {% if view_profile %}
+                        <a href="update" class="btn btn-main btn-round-full" id="update">Edit Profile</a>
+                    {% else %}
+                        <button class="btn btn-main btn-round-full" type="submit">Save Changes</button>
+                    {% endif %}
+
 
                 </div>
             </form>
@@ -119,7 +148,7 @@
 {% block script %}
     {% load static %}
     <script type="text/javascript" src="{% static 'templates/js/profile/view-edit-profile.js' %}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"
             integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg=="
             crossorigin="anonymous"></script>
 {% endblock script %}
