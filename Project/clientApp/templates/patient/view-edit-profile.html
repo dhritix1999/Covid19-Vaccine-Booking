@@ -30,35 +30,35 @@
                     <div class="form-group col-md-6">
                         <label for="name">Full Name</label>
                         <input type="text" class="form-control" id="name" name="name"
-                               placeholder="John Doe" required readonly>
+                               placeholder="John Doe" required {% if view_profile %} readonly {% endif %}>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="phone">Phone no</label>
                         <input type="text" class="form-control" id="phone" name="phone"
-                               placeholder="0xx xxx xxxx" required readonly>
+                               placeholder="0xx xxx xxxx" required {% if view_profile %} readonly {% endif %}>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="email">Email</label>
                         <input type="text" class="form-control" id="email" name="email"
-                               placeholder="name@example.com" required readonly>
+                               placeholder="name@example.com" required {% if view_profile %} readonly {% endif %}>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="emiratesID">Emirates ID</label>
                         <input type="number" class="form-control" id="emiratesID" name="emiratesID"
-                               placeholder="xxxxxxx" required readonly>
+                               placeholder="xxxxxxx" required {% if view_profile %} readonly {% endif %}>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="dateOfBirth">Date of Birth</label>
-                        <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" required readonly>
+                        <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" required {% if view_profile %} readonly {% endif %}>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="gender">Gender</label>
                         <input type="text" class="form-control" id="gender" name="gender"
-                               required readonly>
+                               required {% if view_profile %} readonly {% endif %}>
                     </div>
                 </div>
                 <div class="form-row">
@@ -66,19 +66,19 @@
                         <label for="locationLng">Longitude</label>
                         <input type="number" step="0.01" class="form-control" id="locationLng"
                                name="locationLng"
-                               placeholder="xx.xx" required readonly>
+                               placeholder="xx.xx" required {% if view_profile %} readonly {% endif %}>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="locationLat">Latitude</label>
                         <input type="number" step="0.01" class="form-control" id="locationLat"
                                name="locationLat"
-                               placeholder="xx.xx" required readonly>
+                               placeholder="xx.xx" required {% if view_profile %} readonly {% endif %}>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="industry">Industry</label>
-                        <select id="industry" class="form-control" name="industry" required readonly>
+                        <select id="industry" class="form-control" name="industry" required {% if view_profile %} readonly {% endif %}>
 
                         </select>
                     </div>
@@ -86,7 +86,7 @@
                         <label for="patientMedicalIssues">Medical Conditions</label>
                         <div class="medical-select">
                             <select id="patientMedicalIssues" class="selectpicker" multiple="MULTIPLE"
-                                    name="patientMedicalIssues[]" multiple data-max-options="20">
+                                    name="patientMedicalIssues[]" multiple data-max-options="20" {% if view_profile %} readonly {% endif %}>
 
                             </select>
                         </div>
@@ -96,12 +96,12 @@
                     <div class="form-group col-md-6">
                         <label for="dosesTaken">Doses Taken</label>
                         <input type="number" class="form-control" id="dosesTaken" name="dosesTaken"
-                               required readonly>
+                               required {% if view_profile %} readonly {% endif %}>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="determination">Person of Determination</label>
                         <input type="text" class="form-control" name="determination" id="determination"
-                               required readonly>
+                               required {% if view_profile %} readonly {% endif %}>
                     </div>
                 </div>
                 <div class="btn-container ">
