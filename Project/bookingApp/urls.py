@@ -12,7 +12,8 @@ urlpatterns = [
 
     path('api/booking-slot/<int:booking_slot_pk>/patient/', booking_slot_patient_without_id, name='booking_slot_patient_without_id'),
 
-    path('api/vaccine-center/<int:vaccine_center_pk>/booking-slot/', vaccine_center_bookings,name='vaccine_center_bookings'),
+    # flag: is_available=true/false
+    path('api/patient/<int:patient_pk>/vaccine-center/<int:vaccine_center_pk>/booking-slot/', vaccine_center_bookings,name='vaccine_center_bookings'),
 
 
 ]

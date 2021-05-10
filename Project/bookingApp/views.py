@@ -113,7 +113,7 @@ def patient_booking_slot_with_id(request, patient_pk, booking_slot_pk):
 
 
 @api_view(['GET'])
-def vaccine_center_bookings(request, vaccine_center_pk):
+def vaccine_center_bookings(request, patient_pk, vaccine_center_pk):
     """
     Get all available/unavailable booking slots for a vaccine center
     query_params = "is_available": true or false
@@ -129,17 +129,36 @@ def vaccine_center_bookings(request, vaccine_center_pk):
 
         vaccineCenter = r.json()
 
+        # Get patient Priority from Patient Microservice
+        r=requests.get(f'http://127.0.0.1:8000/api/patient/{patient_pk}/priority')
+
+        if r.status_code >= 400:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        patientPriority = r.json()
+        isPriority = patientPriority['priority']
+
+        print(isPriority)
+
+        # If patient is not priority, only booking slots with < 75% booked capacity are available
+        if isPriority:
+            bookingCountLimit = vaccineCenter['dosesPerHour']
+        else:
+            bookingCountLimit = int(0.75 * vaccineCenter['dosesPerHour'])
+
+        print(bookingCountLimit)
+        
         # Filter slots within the next 3 days
         # Filter slots below capacity / at capacity depending on isAvailable or not
         if isAvailable:
             slots = BookingSlot.objects.filter(
                 timeSlot__range=(datetime.datetime.now(), datetime.datetime.now() + datetime.timedelta(days=3)),
-                bookingCount__lt=vaccineCenter['dosesPerHour']
+                bookingCount__lt=bookingCountLimit
             )
         else:
             slots = BookingSlot.objects.filter(
                 timeSlot__range=(datetime.datetime.now(), datetime.datetime.now() + datetime.timedelta(days=3)),
-                bookingCount__gte=vaccineCenter['dosesPerHour']
+                bookingCount__gte=bookingCountLimit
             )
 
         serializer = BookingSlotSerializer(slots, many=True)

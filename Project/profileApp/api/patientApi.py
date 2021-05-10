@@ -126,5 +126,5 @@ def patient_priority(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':  # profileApp requesting data
-        isPriority = patient.industry.priority
+        isPriority = patient.industry.priority if patient.industry != None else False
         return Response({"priority": isPriority})
