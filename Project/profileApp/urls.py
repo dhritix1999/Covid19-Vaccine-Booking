@@ -11,6 +11,7 @@ urlpatterns = [
     path('patient/<int:pk>/', patient_with_id, name='patient_with_id'),
     path('patient/<int:pk>/medical-issue', patients_medical_issues_without_id, name='patients_medical_issues_without_id'),
     path('patient/<int:patient_pk>/medical-issue/<int:medical_issue_pk>/', patients_medical_issues_with_id, name='patients_medical_issues_with_id'),
+    path('patient/<int:pk>/priority', patient_priority, name='patient_priority'),
 
     path('admin/login/', admin_login, name='admin_login'),
     path('admin/', admin_without_id, name='admin_without_id'),
