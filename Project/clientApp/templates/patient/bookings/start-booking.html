@@ -1,10 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block head_title %} Patient | {{ block.super }}{% endblock head_title %}
 
-</body>
-</html>
+{#insert additional stylings#}
+{% block stylings %}
+    {% load static %}
+    <link href="{% static 'templates/css/profile/homepage.css' %}" rel="stylesheet">
+    <!-- Slick Slider  CSS -->
+{% endblock stylings %}
+
+{% block content %}
+    {% include 'patient/nav.html' %}
+
+
+
+    <!-- Slider Start -->
+    <section class="banner" style="background: #f5f5f5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xl-6">
+                    <div class="block">
+                        <div class="divider mb-3"></div>
+                        <span class="text-uppercase text-sm letter-spacing ">Start Your booking Process</span>
+                        <h2 class="mb-3 mt-3">Start</h2>
+
+                        <p class="mb-4 pr-5">Click button bellow to check if you are eligible for the vaccine</p>
+                        <div class="btn-container ">
+                            <button id="vaccineEligibility" target="_blank"
+                               class="btn btn-main-2 btn-icon btn-round-full">Check Vaccine Eligibility</button>
+                              <a id="proceedBooking" href="vaccine-center" target="_blank"
+                               class="btn btn-main btn-round-full" style="visibility:hidden">Proceed Booking</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xl-6">
+                    <div class="block">
+                        <div class="feature-item mb-5 mb-lg-0">
+                            <h4 class="mb-3">Eligibility Check List</h4>
+                            <span style="font-size: 14px;">Make sure you fit all categories to see if you are eligible for the vaccine</span>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Between ages 10 - 80 years old</li>
+                                <li class="list-group-item">Not Pregnant or breast-feeding</li>
+                                <li class="list-group-item">No history of cardiovascular diseases</li>
+                                <li class="list-group-item">Not allergic to other vaccines, or has any severe,
+                                    life-threatening allergies
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Not Eligible Modal -->
+<div class="modal fade" id="falseModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Not Eligible</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Unfortunately, you are not eligible to take the vaccine. Please contact our center to know your options.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-round-full" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- Eligible Modal -->
+<div class="modal fade" id="trueModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Eligible</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>You are eligible for the COVID-19 Vaccine. Click Next to Proceed</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-round-full" data-dismiss="modal">Close</button>
+           <a href="vaccine-center" type="button" class="btn btn-primary btn-round-full">Next</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}
+
+{% block script %}
+    {% load static %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+            integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'templates/js/booking/start-patient-booking.js' %}"></script>
+{% endblock script %}
