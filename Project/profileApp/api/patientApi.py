@@ -116,3 +116,18 @@ def patients_medical_issues_with_id(request, patient_pk, medical_issue_pk):
             return Response(status=status.HTTP_200_OK)
         except MedicalIssue.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
+def patient_priority(request, pk):
+
+    try:
+        patient = Patient.objects.get(pk=pk)
+    except Patient.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':  # profileApp requesting data
+        # Check if priority industry
+        isPriority = patient.industry.priority if patient.industry != None else False
+        # Check if person of determination
+        isPriority = isPriority or patient.determination
+        return Response({"priority": isPriority})
