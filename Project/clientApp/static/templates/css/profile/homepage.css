@@ -442,8 +442,6 @@ a:focus {
 .banner {
   position: relative;
   overflow: hidden;
-  background: #fff;
-  background: url("../../img/COVID-19-vaccine-banner.jpg") no-repeat;
   background-size: cover;
   min-height: 650px;
 }
