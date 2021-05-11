@@ -11,14 +11,15 @@ def index(request):
 def patient_register(request):
     return render(request, 'patient/register.html')
 
+
 def patient_homepage(request):
     return render(request, 'patient/homepage.html')
+
 
 # ================================
 def admin_homepage(request):
     return render(request, 'admin/homepage.html')
 
+
 def admin_industry(request):
     return render(request, 'admin/industry_priority.html')
-
-
