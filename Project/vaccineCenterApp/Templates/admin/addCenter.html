@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block head_title %} Create Vaccine Center | {{ block.super }}{% endblock head_title %}
+
+{#insert additional stylings#}
+{% block stylings %}
+    {% load static %}
+    <link href="{% static 'templates/css/profile/createvc.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" />
+{% endblock stylings %}
+
+{% block content %}
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+            <div class="card login-card">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/static/templates/img/vaccinecenter.jpg" alt="login" class="login-card-img">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="brand-wrapper">
+                                <h2>Vaccine Center Portal</h2>
+                            </div>
+                            <p class="login-card-description">Create new Vaccine Center</p>
+                            <form id="form" action="api/vaccine-center/" method="POST">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="centername">Center Name</label>
+                                        <input type="text" class="form-control" id="centername" name="centername"
+                                               placeholder="Almizhar Vaccine Center" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                     <div class="form-group col-md-6">
+                                        <label for="lat">Latitude</label>
+                                        <input type="text" class="form-control" id="lat" name="lat"
+                                               placeholder="xx.xx" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="long">Longitude</label>
+                                        <input type="text" class="form-control" id="long" name="long"
+                                               placeholder="xx.xx" required>
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                     <div class="form-group col-md-6">
+                                        <label for="stock">Stock</label>
+                                        <input type="number" class="form-control" id="stock" name="stock"
+                                               placeholder="100" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="dosesperhour">Doses Per Hour</label>
+                                        <input type="number" class="form-control" id="dosesperhour" name="dosesperhour"
+                                               placeholder="30" required>
+                                    </div>
+
+                                    </div>
+
+                                <button class="btn btn-block login-btn mb-4" type="submit">Create Vaccine Center</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block script %}
+    {% load static %}
+    <script type="text/javascript" src="{% static 'templates/js/addCenter.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous"></script>
+{% endblock script %}
