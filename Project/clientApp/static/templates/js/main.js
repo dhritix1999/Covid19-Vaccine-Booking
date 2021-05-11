@@ -55,7 +55,7 @@ function convertFormToJSONString(form) {
  * @param tag id of the table row
  * @param tableTag the id of the table
  * */
-function deleteEntity(url, tag, tableTag = 'dataTable') {
+function deleteEntity(url, tableTag = 'dataTable') {
 
     $.ajax({
         type: 'DELETE',
@@ -65,8 +65,8 @@ function deleteEntity(url, tag, tableTag = 'dataTable') {
             console.log('Deletion was successful.');
             console.log(data)
 
-            // delete row
-            $('#' + tableTag).DataTable().row('#' + tag).remove().draw();
+            // refresh page
+            location.reload()
         },
         error: function (data) {
             //print to log

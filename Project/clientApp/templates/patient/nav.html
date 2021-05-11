@@ -55,7 +55,10 @@
 }
 
 .dropdown .dropdown-item:hover {
-  color: #e12454;
+  color: #e12454;}
+
+    .navigation {
+      box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
 }
 </style>
 <header>
@@ -67,8 +70,8 @@
 				<a class="nav-link" href="/patient">Home</a>
 			  </li>
 {#			   <li class="nav-item"><a class="nav-link" href="/about">About</a></li>#}
-			    <li class="nav-item"><a class="nav-link" href="patient/booking/start">Booking</a></li>
-				<li class="nav-item"><a class="nav-link" href="patient/booking/history">History</a></li>
+			    <li class="nav-item"><a class="nav-link" href="/patient/booking/start">Booking</a></li>
+				<li class="nav-item"><a class="nav-link" href="/patient/booking/history">History</a></li>
 
 
 {#			  	<li class="nav-item dropdown">#}
@@ -83,7 +86,7 @@
 
 			<ul class="navbar-nav ml-auto">
 					<li class="nav-item dropdown">
-					  <a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, Patient <i class="icofont-thin-down"></i></a>
+					  <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, Patient <i class="icofont-thin-down"></i></a>
 					  <ul class="dropdown-menu" aria-labelledby="dropdown03">
 						  <li><a class="dropdown-item" href="/patient/profile/view">View Profile</a></li>
 						  <li><a class="dropdown-item" href="/logout">Logout</a></li>
