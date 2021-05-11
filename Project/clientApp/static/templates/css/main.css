@@ -11,6 +11,7 @@ body {
     margin: 30px 0;
     border-radius: 3px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
 
 input[type=radio] {
     transform: scale(1.25);
