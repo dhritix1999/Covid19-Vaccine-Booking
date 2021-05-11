@@ -17,7 +17,7 @@ function get_industries(url){
                     data[i].id,
                     data[i].name,
                     data[i].priority,
-                        '<a th:href="@{/users/edit/{login}(login=${user.login})}" class="edit"><i\n' +
+                        '<a href="#editPriorityModal" class="edit" data-toggle="modal"><i\n' +
                         '                                class="material-icons" data-toggle="tooltip"\n' +
                         '                                title="Edit">&#xE254;</i></a>'+
                         '    <a  onclick="deleteEntity(&quot/api/industry/'+data[i].id+'&quot)" class="delete" style="cursor: pointer"><i\n' +
