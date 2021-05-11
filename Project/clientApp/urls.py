@@ -16,8 +16,10 @@ urlpatterns = [
     path('patient/profile/update', patientViews.update_profile),
 
     # patient booking
-    path('patient/booking/list', patientViews.allowed_bookings),
     path('patient/booking/start', patientViews.start_booking),
+    path('patient/booking/vaccine-center', patientViews.vaccine_centres),
+    path('patient/booking/vaccine-center/<int:pk>/slots', patientViews.booking_slots),
+
     path('patient/booking/history', patientViews.booking_history),
 
     # industry
