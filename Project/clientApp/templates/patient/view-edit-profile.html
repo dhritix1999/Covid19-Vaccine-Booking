@@ -20,7 +20,11 @@
         <div class="form-wrapper">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1><b>View Profile</b></h1>
+                     {% if view_profile %}
+                            <h1><b>View Profile</b></h1>
+                    {% else %}
+                          <h1><b>Edit Profile</b></h1>
+                    {% endif %}
                 </div>
             </div>
             <hr style="border-top: 5px solid #e12454;">
@@ -94,9 +98,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="industry">Industry</label>
-                        <select id="industry" class="form-control" name="industry" required {% if view_profile %}
-                                readonly {% endif %}>
-
+                        <select id="industry" class="form-control" name="industry" required
+                                {% if view_profile %} disabled {% endif %}>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
@@ -104,7 +107,7 @@
                         <div class="medical-select">
                             <select id="patientMedicalIssues" class="selectpicker" multiple="MULTIPLE"
                                     name="patientMedicalIssues[]" multiple data-max-options="20" {% if view_profile %}
-                                    readonly {% endif %}>
+                                    disabled {% endif %}>
 
                             </select>
                         </div>
@@ -120,7 +123,7 @@
                         <label for="determination">Person of Determination</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox"
-                                   name="determination" value="true" {% if view_profile %} readonly {% endif %}>
+                                   name="determination" value="true" {% if view_profile %} disabled {% endif %}>
                             <input class="form-check-input" type="checkbox"
                                    name="determination" value="false" checked hidden readonly>
                             <label class="form-check-label" for="determination">True</label>
