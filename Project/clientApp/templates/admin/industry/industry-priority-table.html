@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block head_title %} Priority | {{ block.super }}{% endblock head_title %}
+{% block head_title %} Industry | {{ block.super }}{% endblock head_title %}
 
 {#insert additional stylings#}
 {% block stylings %}
     {% load static %}
-    <link href="{% static 'templates/css/data-table.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+        <link href="{% static 'templates/css/data-table.css' %}" rel="stylesheet">
 
 {% endblock stylings %}
 
@@ -21,7 +21,7 @@
                         <h2><b>Industry Priority</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="industry/add" class="btn btn-success"><i
+                        <a href="industry/add" class="btn btn-secondary"><i
                                 class="material-icons">&#xE147;</i> <span>Add New Industry</span></a>
                     </div>
                 </div>
