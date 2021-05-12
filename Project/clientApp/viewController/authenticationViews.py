@@ -21,5 +21,18 @@ def admin_homepage(request):
     return render(request, 'admin/homepage.html')
 
 
-def admin_industry(request):
-    return render(request, 'admin/industry_priority.html')
+def industry_list(request):
+    return render(request, 'admin/industry/industry-priority-table.html')
+
+
+def add_industry(request):
+    context = {"edit_industry": False}
+    return render(request, 'admin/industry/add-edit-industry.html', context)
+
+
+def edit_industry(request, pk):
+    context = {
+        "edit_industry": True,
+        "industryID": pk
+    }
+    return render(request, 'admin/industry/add-edit-industry.html', context)

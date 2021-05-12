@@ -23,7 +23,10 @@ urlpatterns = [
     path('patient/booking/history', patientViews.booking_history),
 
     # industry
-    path('admins/industry', authenticationViews.admin_industry),
+    path('admins/industry', authenticationViews.industry_list),
+    path('admins/industry/add', authenticationViews.add_industry),
+    path('admins/industry/<int:pk>/edit', authenticationViews.edit_industry),
+
 
     # priority
 
