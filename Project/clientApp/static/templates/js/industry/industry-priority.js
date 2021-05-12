@@ -2,7 +2,9 @@ $(document).ready(function () {
 
     get_industries('/api/industry/')
 
+
 });
+
 
 function get_industries(url){
     $.ajax({
@@ -17,11 +19,11 @@ function get_industries(url){
                     data[i].id,
                     data[i].name,
                     data[i].priority,
-                        '<a href="#editPriorityModal" class="edit" data-toggle="modal"><i\n' +
-                        '                                class="material-icons" data-toggle="tooltip"\n' +
+                        '<a href="industry/'+data[i].id+'/edit" class="edit"><i\n' +
+                        '                                class="material-icons"\n' +
                         '                                title="Edit">&#xE254;</i></a>'+
                         '    <a  onclick="deleteEntity(&quot/api/industry/'+data[i].id+'&quot)" class="delete" style="cursor: pointer"><i\n' +
-                        '                                class="material-icons" data-toggle="tooltip"\n' +
+                        '                                class="material-icons"\n' +
                         '                                title="Delete">&#xe888;</i></a>'
                 ] ).draw( false );
             }
