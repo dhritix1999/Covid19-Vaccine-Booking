@@ -103,7 +103,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 .btn.btn-icon i {
   border-left: 1px solid rgba(255, 255, 255, 0.09);
-  padding-left: 15px;
+  /*padding-left: 15px;*/
 }
 
 .btn:focus {

@@ -17,6 +17,11 @@ input[type=radio] {
     transform: scale(1.25);
 }
 
+input[type=checkbox] {
+    transform: scale(1.75);
+}
+
+
 .material-icons.button-icons {
     float: left;
     font-size: 21px;
