@@ -4,7 +4,7 @@
 {#insert additional stylings#}
 {% block stylings %}
     {% load static %}
-    <link href="{% static 'templates/css/profile/createvc.css' %}" rel="stylesheet">
+    <link href="{% static 'templates/css/profile/../../../static/templates/css/createvc.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" />
 {% endblock stylings %}
 
@@ -69,6 +69,6 @@
 
 {% block script %}
     {% load static %}
-    <script type="text/javascript" src="{% static 'templates/js/addCenter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'templates/js/vaccine-center/addCenter.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous"></script>
 {% endblock script %}
