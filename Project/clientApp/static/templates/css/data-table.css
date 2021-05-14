@@ -12,7 +12,6 @@
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
 	.table-title {
-		padding-bottom: 15px;
 		background: #223a66;
 		color: #fff;
 		padding: 16px 30px;
@@ -33,7 +32,6 @@
 		border: none;
 		min-width: 50px;
 		border-radius: 2px;
-		border: none;
 		outline: none !important;
 		margin-left: 10px;
 	}
@@ -170,7 +168,7 @@
 		border-width: 0 3px 3px 0;
 		transform: inherit;
 		z-index: 3;
-		transform: rotateZ(45deg);
+		/*transform: rotateZ(45deg);*/
 	}
 	.custom-checkbox input[type="checkbox"]:checked + label:before {
 		border-color: #03A9F4;

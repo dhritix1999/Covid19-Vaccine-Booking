@@ -18,7 +18,7 @@ input[type=radio] {
 }
 
 input[type=checkbox] {
-    transform: scale(1.75);
+    transform: scale(1.25);
 }
 
 
@@ -28,3 +28,13 @@ input[type=checkbox] {
     margin-right: 5px;
 }
 
+.form-check{
+    margin-left: 5px;
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-30 { font-size: 30px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-52 { font-size: 52px; }
