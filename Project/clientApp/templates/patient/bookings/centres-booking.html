@@ -1,12 +1,11 @@
 {% extends "base.html" %}
-{% block head_title %} View Profile | {{ block.super }}{% endblock head_title %}
+{% block head_title %} Vaccine Centers Booking | {{ block.super }}{% endblock head_title %}
 
 {#insert additional stylings#}
 {% block stylings %}
     {% load static %}
-    <link href="{% static 'templates/css/form-stylings.css' %}" rel="stylesheet">
-        <link href="{% static 'templates/css/data-table.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+     <link href="{% static 'templates/css/data-table.css' %}" rel="stylesheet">
 {% endblock stylings %}
 
 {% block content %}
@@ -18,7 +17,7 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-12">
-						<h2><b>Vaccine Centres</b></h2>
+						<h2><b>Select Vaccine Center</b></h2>
 					</div>
                 </div>
             </div>
@@ -33,23 +32,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        <a href="work-orders/">2</a>
-                    </td>
-                        <td>Sharjah Expo Centre</td>
-                        <td>
-                        <a href="https://www.google.com/maps/search/?api=1&query=25.309,55.37"  target="_blank" title="Location" class="location"><i
-                                class="material-icons" style="font-size: 32px; color: darkblue" data-toggle="tooltip"
-                                title="Edit">&#xe55f;</i></a>
-                        </td>
-						<td>100</td>
-                        <td>
-                             <a href="https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393"  target="_blank" title="Location" class="location"><i
-                                class="material-icons" style="font-size: 32px; color:#e12454;" data-toggle="tooltip"
-                                title="Edit">&#xe5c8;</i></a>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
