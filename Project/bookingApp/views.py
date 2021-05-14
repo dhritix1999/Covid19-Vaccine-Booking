@@ -84,8 +84,7 @@ def patient_booking_slot_with_id(request, patient_pk, booking_slot_pk):
     Retrieve, update or delete a booking slot of patient
     """
     try:
-        # Just check for existency of booking slot (cannot do for patient, diff microservice)
-        _ = BookingSlot.objects.get(id=booking_slot_pk)
+        bookingSlot = BookingSlot.objects.get(id=booking_slot_pk)
     except BookingSlot.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -99,6 +98,11 @@ def patient_booking_slot_with_id(request, patient_pk, booking_slot_pk):
 
     elif request.method == 'POST':
         Booking.objects.create(bookingSlotID=booking_slot_pk, patientID=patient_pk)
+
+        # Also increment booking
+        bookingSlot.bookingCount += 1
+        bookingSlot.save()
+
         return Response(status=status.HTTP_200_OK)
 
 
