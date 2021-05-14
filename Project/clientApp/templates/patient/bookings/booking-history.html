@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block head_title %} Booking History | {{ block.super }}{% endblock head_title %}
+
+{#insert additional stylings#}
+{% block stylings %}
+    {% load static %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+     <link href="{% static 'templates/css/data-table.css' %}" rel="stylesheet">
+{% endblock stylings %}
+
+{% block content %}
+
+    {% include 'patient/nav.html' %}
+
+      <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-12">
+						<h2><b>Your Bookings</b></h2>
+					</div>
+                </div>
+            </div>
+            <table id="dataTable" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Vaccine Centers</th>
+                        <th>Location</th>
+						<th>Time Slot</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block script %}
+    {% load static %}
+        <script src ="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="{% static 'templates/js/data-table.js' %}"></script>
+    <script type="text/javascript" src="{% static 'templates/js/booking/history.js' %}"></script>
+
+{% endblock script %}
