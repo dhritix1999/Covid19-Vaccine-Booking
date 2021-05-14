@@ -30,6 +30,8 @@ def add_vaccine_center(request):
     return render(request, 'admin/vaccine-center/add-edit-center.html')
 
 
-def edit_vaccine_center(request):
-    context = {"edit_industry": True}
+def edit_vaccine_center(request, pk):
+    context = {"edit_industry": True,
+               "vaccineCenterID": pk
+               }
     return render(request, 'admin/vaccine-center/add-edit-center.html')
