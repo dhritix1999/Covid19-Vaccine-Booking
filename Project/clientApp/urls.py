@@ -1,5 +1,5 @@
 from django.urls import path
-from .viewController import authenticationViews, patientViews
+from .viewController import authenticationViews, patientViews, adminsViews
 
 urlpatterns = [
 
@@ -23,17 +23,17 @@ urlpatterns = [
     path('patient/booking/history', patientViews.booking_history),
 
     # industry
-    path('admins/industry', authenticationViews.industry_list),
-    path('admins/industry/add', authenticationViews.add_industry),
-    path('admins/industry/<int:pk>/edit', authenticationViews.edit_industry),
+    path('admins/industry', adminsViews.industry_list),
+    path('admins/industry/add', adminsViews.add_industry),
+    path('admins/industry/<int:pk>/edit', adminsViews.edit_industry),
 
 
     # priority
 
 
     # vaccine centers
-
-
-
+    path('admins/vaccine-centers', adminsViews.vaccine_centers_list),
+    path('admins/vaccine-centers/add', adminsViews.add_vaccine_center),
+    path('admins/vaccine-centers/<int:pk>/edit', adminsViews.edit_vaccine_center)
 
 ]
