@@ -13,12 +13,12 @@ def vaccine_centres(request):
 
 
 def booking_slots(request, pk):
-    context = {"vaccineCentre": pk}
+    context = {"vaccineCenter": pk}
     return render(request, 'patient/bookings/bookings-table.html', context)
 
 
 def booking_history(request):
-    return None
+    return render(request, 'patient/bookings/booking-history.html')
 
 
 # user profile
