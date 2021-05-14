@@ -24,11 +24,12 @@ function get_bookings(url) {
 
                 newRow = new Object()
                 newRow.id = data[i].id
+                newRow.bookingSlotID = data[i].bookingSlotID
 
                 $.ajax({
                     type: 'GET',
                     contentType: "application/json; charset=utf-8",
-                    url: '/api/booking-slots/' + data[i].bookingSlotID + '/',
+                    url: '/api/booking-slots/' + newRow.bookingSlotID + '/',
                     success: function (slots) {
                         console.log(slots)
                         newRow.timeSlot = slots.timeSlot
@@ -64,7 +65,7 @@ function get_bookings(url) {
                                     '           class="location"><i class="material-icons md-30" style="color: darkblue">&#xe55f;</i></a>',
                                     bookings[i].timeSlot,
                                     'Upcoming',
-                                    '   <a data-url="/api/patient/' + patient_id + '/booking-slot/' + bookings[i].id + '/"  onclick="deleteEntity(this.getAttribute(\'data-url\'))"   style="cursor: pointer" class="delete"><i\n' +
+                                    '   <a data-url="/api/patients/' + patient_id + '/booking-slots/' + bookings[i].bookingSlotID + '/"  onclick="deleteEntity(this.getAttribute(\'data-url\'))"   style="cursor: pointer" class="delete"><i\n' +
                                     ' class="material-icons" title="Delete Booking">&#xe888;</i></a>'
                                 ]).draw(false);
                             }

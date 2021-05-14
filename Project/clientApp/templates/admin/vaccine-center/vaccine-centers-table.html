@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block head_title %} Industry | {{ block.super }}{% endblock head_title %}
+{% block head_title %} Vaccine Centers | {{ block.super }}{% endblock head_title %}
 
 {#insert additional stylings#}
 {% block stylings %}
     {% load static %}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-        <link href="{% static 'templates/css/data-table.css' %}" rel="stylesheet">
+    <link href="{% static 'templates/css/data-table.css' %}" rel="stylesheet">
 
 {% endblock stylings %}
 
@@ -18,11 +18,11 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2><b>Industry Priority</b></h2>
+                        <h2><b>Vaccine Centers</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="industry/add" class="btn btn-secondary"><i
-                                class="material-icons">&#xE147;</i> <span>Add New Industry</span></a>
+                        <a href="vaccine-centers/add" class="btn btn-secondary"><i
+                                class="material-icons">&#xE147;</i> <span>Add New Vaccine Center</span></a>
                     </div>
                 </div>
             </div>
@@ -30,12 +30,15 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Priority</th>
-                    <th>Actions</th>
+                    <th style="width: 300px">Name</th>
+                    <th>Location</th>
+                    <th>Stock</th>
+                    <th>Doses Per Hour</th>
+                    <th>Action</th>
+
                 </tr>
                 </thead>
-                <tbody>
+               <tbody>
                 </tbody>
             </table>
         </div>
@@ -47,6 +50,6 @@
     {% load static %}
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="{% static 'templates/js/data-table.js' %}"></script>
-    <script type="text/javascript" src="{% static 'templates/js/industry/industry-priority.js' %}"></script>
+    <script type="text/javascript" src="{% static 'templates/js/vaccine-center/vaccine-centers.js' %}"></script>
 
 {% endblock script %}
