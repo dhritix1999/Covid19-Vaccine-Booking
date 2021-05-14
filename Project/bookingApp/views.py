@@ -152,12 +152,12 @@ def vaccine_center_bookings(request, patient_pk, vaccine_center_pk):
         # Filter slots below capacity / at capacity depending on isAvailable or not
         if isAvailable:
             slots = BookingSlot.objects.filter(
-                timeSlot__range=(datetime.datetime.now(), datetime.datetime.now() + datetime.timedelta(days=3)),
+                timeSlot__gte=datetime.datetime.now(),
                 bookingCount__lt=bookingCountLimit
             )
         else:
             slots = BookingSlot.objects.filter(
-                timeSlot__range=(datetime.datetime.now(), datetime.datetime.now() + datetime.timedelta(days=3)),
+                timeSlot__gte=datetime.datetime.now(),
                 bookingCount__gte=bookingCountLimit
             )
 
