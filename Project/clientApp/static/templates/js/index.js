@@ -54,7 +54,7 @@ function indexFormSubmit(form, redirectUrl = null, getFormData = convertFormToJS
                 console.log(data);
 
                 //alert
-                errorAlert(data.responseJSON.message)
+                alert("User not found");
             },
         });
     });

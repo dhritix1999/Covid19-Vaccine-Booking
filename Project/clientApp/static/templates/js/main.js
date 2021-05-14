@@ -101,7 +101,8 @@ function formSubmit(form, formReset, successMessage, getFormData = convertFormTo
             data: getFormData(form),
             success: function (data) {
 
-                showalert(successMessage, "alert-success");
+                if (successMessage !== null)
+                    showalert(successMessage, "alert-success");
 
                 if (redirectUrl != null) {
                     if (sessionMessage != null)
@@ -133,25 +134,6 @@ function formSubmit(form, formReset, successMessage, getFormData = convertFormTo
     });
 }
 
-/**
- * @param url of the GET api
- * @returns data of the ajax get
- * */
-function getDataFromUrl(url) {
-    $.ajax({
-        type: 'GET',
-        contentType: "application/json; charset=utf-8",
-        url: url,
-        success: function (data) {
-            console.log(data)
-            return data
-        },
-        error: function (data) {
-            console.log(data)
-            return 'error'
-        },
-    });
-}
 
 
 

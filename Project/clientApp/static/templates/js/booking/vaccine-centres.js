@@ -1,7 +1,16 @@
-http://127.0.0.1:8000/api/patient/2/vaccine-center/?is_priority=false
+let patient_id
+$(document).ready(function () {
 
+    $.when(
+        patient_id = get_cookie('patient'),
+        console.log(patient_id)
+    ).then(function () {
+        get_vaccine_centres('/api/patients/' + patient_id + '/vaccine-centers/?is_priority=true')
+    })
 
-function get_locations(url, tableTag){
+});
+
+function get_vaccine_centres(url) {
     $.ajax({
         type: 'GET',
         contentType: "application/json; charset=utf-8",
@@ -11,14 +20,18 @@ function get_locations(url, tableTag){
 
 
             for (var i = 0; i < data.length; i++) {
-                $('#'+tableTag).DataTable().row.add( [
+                $('#dataTable').DataTable().row.add([
                     data[i].id,
                     data[i].name,
-                    data[i].description,
-                    '<a href="/work-orders/add/locations/'+data[i].id+'" class="view" title="" data-toggle="tooltip" data-original-title="View Details"><i class="material-icons"></i></a>'
-                ] ).draw( false );
+                    ' <a href="https://www.google.com/maps/search/?api=1&query=' + data[i].locationLat + ',' + data[i].locationLng + '" target="_blank" title="Location"\n' +
+                    '           class="location"><i class="material-icons md-30" style="color: darkblue">&#xe55f;</i></a>',
+                    data[i].dosesPerHour,
+                    '   <a href="/patient/booking/vaccine-center/'+data[i].id+'/slots" title="Proceed" class="next"><i\n' +
+                    '            class="material-icons md-30" style="color:#e12454;">&#xe5c8;</i></a>'
+                ]).draw(false);
             }
         },
-        error: function (a, jqXHR, exception) { }
+        error: function (a, jqXHR, exception) {
+        }
     });
 }
