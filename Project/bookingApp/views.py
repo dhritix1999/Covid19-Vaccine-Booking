@@ -161,5 +161,13 @@ def vaccine_center_bookings(request, patient_pk, vaccine_center_pk):
                 bookingCount__gte=bookingCountLimit
             )
 
+
+        ### ALT BEHAVIOR IF DATE SPECIFIED
+        ### DATE FORMAT EXAMPLE: 2021-05-15T17:00:00
+        filteredDateString = request.query_params.get('filtered_date')
+        if filteredDateString != None:
+            filteredDate = datetime.datetime.strptime(filteredDateString, '%Y-%m-%dT%H:%M:%S')
+            slots = slots.filter(timeSlot__year=filteredDate.year, timeSlot__month=filteredDate.month, timeSlot__day=filteredDate.day, timeSlot__hour=filteredDate.hour)
+
         serializer = BookingSlotSerializer(slots, many=True)
         return Response(serializer.data)
