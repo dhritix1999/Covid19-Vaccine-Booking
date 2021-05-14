@@ -5,11 +5,11 @@ $(document).ready(function () {
 
     //get industries
     $("#industry").empty()
-    loadIndustries('/api/industry/')
+    loadIndustries('/api/industries/')
 
     //get medical problems
     $("#patientMedicalIssues").empty()
-    loadMedicalIssues('/api/medical-issue/')
+    loadMedicalIssues('/api/medical-issues/')
 
     //register form
     const patientForm = $("#form");

@@ -13,19 +13,19 @@ $(document).ready(function () {
 
         $.when(
             //get industries
-            loadIndustries('/api/industry/'),
+            loadIndustries('/api/industries/'),
 
             //get medical problems
-            loadMedicalIssues('/api/medical-issue/')
+            loadMedicalIssues('/api/medical-issues/')
         ).then(function () {
-            loadUserDetails('/api/patient/' + patient_id + '/')
+            loadUserDetails('/api/patients/' + patient_id + '/')
         })
 
 
         // user form
         const patientForm = $("#form");
 
-        patientForm.attr('action', '/api/patient/'+patient_id+'/')
+        patientForm.attr('action', '/api/patients/'+patient_id+'/')
         //update user form submission
         formSubmit(patientForm, false, 'Patient updated successfully', (form) => {
 

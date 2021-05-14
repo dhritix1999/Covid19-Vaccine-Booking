@@ -67,7 +67,7 @@ def patient_possible_vaccine_centers(request, patient_pk):
         isPriority = request.query_params.get('is_priority') == 'true'
 
         # Get patient info from Patients Microservice
-        r=requests.get(f'http://127.0.0.1:8000/api/patient/{patient_pk}/')
+        r=requests.get(f'http://127.0.0.1:8000/api/patients/{patient_pk}/')
 
         if r.status_code >= 400:
             return Response(status=status.HTTP_404_NOT_FOUND)

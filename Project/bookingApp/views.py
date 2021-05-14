@@ -122,7 +122,7 @@ def vaccine_center_bookings(request, patient_pk, vaccine_center_pk):
         isAvailable = request.query_params.get('is_available') == 'true'
 
         # Get vaccine center info from VaccineCenter Microservice
-        r=requests.get(f'http://127.0.0.1:8000/api/vaccine-center/{vaccine_center_pk}')
+        r=requests.get(f'http://127.0.0.1:8000/api/vaccine-centers/{vaccine_center_pk}')
 
         if r.status_code >= 400:
             return Response(status=status.HTTP_404_NOT_FOUND)
@@ -130,7 +130,7 @@ def vaccine_center_bookings(request, patient_pk, vaccine_center_pk):
         vaccineCenter = r.json()
 
         # Get patient Priority from Patient Microservice
-        r=requests.get(f'http://127.0.0.1:8000/api/patient/{patient_pk}/priority')
+        r=requests.get(f'http://127.0.0.1:8000/api/patients/{patient_pk}/priorities')
 
         if r.status_code >= 400:
             return Response(status=status.HTTP_404_NOT_FOUND)

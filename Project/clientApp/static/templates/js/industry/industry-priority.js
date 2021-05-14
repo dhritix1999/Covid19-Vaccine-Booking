@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    get_industries('/api/industry/')
+    get_industries('/api/industries/')
 
 
 });
@@ -28,7 +28,7 @@ function get_industries(url) {
                     '<a href="industry/' + data[i].id + '/edit" class="edit"><i\n' +
                     '                                class="material-icons"\n' +
                     '                                title="Edit">&#xE254;</i></a>' +
-                    '    <a  onclick="deleteEntity(&quot/api/industry/' + data[i].id + '&quot)" class="delete" style="cursor: pointer"><i\n' +
+                    '    <a  onclick="deleteEntity(&quot/api/industries/' + data[i].id + '&quot)" class="delete" style="cursor: pointer"><i\n' +
                     '                                class="material-icons"\n' +
                     '                                title="Delete">&#xe888;</i></a>'
                 ]).draw(false);

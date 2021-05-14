@@ -24,8 +24,8 @@
             </div>
             <hr style="border-top: 5px solid #e12454;">
             <form id="form"
-                    {% if edit_industry %} action="/api/industry/{{ industryID }}/"  method="PUT"
-                    {% else %} action="/api/industry/"  method="POST"
+                    {% if edit_industry %} action="/api/industries/{{ industryID }}/"  method="PUT"
+                    {% else %} action="/api/industries/"  method="POST"
                     {% endif %}>
                 {#alert#}
                 <div id="alert_placeholder"></div>

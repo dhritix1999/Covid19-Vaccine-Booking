@@ -7,7 +7,7 @@ $(document).ready(function () {
     else {
         //fill up the form
         //get id value
-        get_industry_by_id('/api/industry/' + $("#id").val() + '/')
+        get_industry_by_id('/api/industries/' + $("#id").val() + '/')
         formSubmit(industryForm, false, 'Industry updated successfully', (form) => {
             return JSON.stringify({
                 "name": $('#name').val(),

@@ -27,7 +27,7 @@ function checkVaccineEligibility() {
         $.ajax({
             type: 'GET',
             contentType: "application/json; charset=utf-8",
-            url: '/api/patient/' + patient_id + '/medical-issue',
+            url: '/api/patients/' + patient_id + '/medical-issues',
             success: function (data) {
                 console.log(data)
                 let eligible = true
