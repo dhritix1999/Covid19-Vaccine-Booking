@@ -1,70 +1,82 @@
 {% extends "base.html" %}
-{% block head_title %} Create Vaccine Center | {{ block.super }}{% endblock head_title %}
+{% block head_title %} Vaccine Center | {{ block.super }}{% endblock head_title %}
 
 {#insert additional stylings#}
 {% block stylings %}
     {% load static %}
-    <link href="{% static 'templates/css/profile/../../../static/templates/css/createvc.css' %}" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" />
+   <link href="{% static 'templates/css/form-stylings.css' %}" rel="stylesheet">
 {% endblock stylings %}
 
 {% block content %}
-    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
-        <div class="container">
-            <div class="card login-card">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="/static/templates/img/vaccinecenter.jpg" alt="login" class="login-card-img">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <div class="brand-wrapper">
-                                <h2>Vaccine Center Portal</h2>
-                            </div>
-                            <p class="login-card-description">Create new Vaccine Center</p>
-                            <form id="form" action="api/vaccine-center/" method="POST">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="centername">Center Name</label>
-                                        <input type="text" class="form-control" id="centername" name="centername"
-                                               placeholder="Almizhar Vaccine Center" required>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                     <div class="form-group col-md-6">
-                                        <label for="lat">Latitude</label>
-                                        <input type="text" class="form-control" id="lat" name="lat"
-                                               placeholder="xx.xx" required>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="long">Longitude</label>
-                                        <input type="text" class="form-control" id="long" name="long"
-                                               placeholder="xx.xx" required>
-                                    </div>
+----------------
+  {% include 'admin/nav.html' %}
 
-                                </div>
-                                <div class="form-row">
-                                     <div class="form-group col-md-6">
-                                        <label for="stock">Stock</label>
-                                        <input type="number" class="form-control" id="stock" name="stock"
-                                               placeholder="100" required>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="dosesperhour">Doses Per Hour</label>
-                                        <input type="number" class="form-control" id="dosesperhour" name="dosesperhour"
-                                               placeholder="30" required>
-                                    </div>
-
-                                    </div>
-
-                                <button class="btn btn-block login-btn mb-4" type="submit">Create Vaccine Center</button>
-                            </form>
-                        </div>
-                    </div>
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    {% if edit_vaccinecenter %}
+                        <h1><b>Edit Vaccine Center</b></h1>
+                    {% else %}
+                        <h1><b>Add Vaccine Center</b></h1>
+                    {% endif %}
                 </div>
             </div>
+            <hr style="border-top: 5px solid #e12454;">
+            <form id="form"
+                    {% if edit_vaccinecenter %} action="/api/vaccine-centers/{{ vaccinecenterID }}/"  method="PUT"
+                    {% else %} action="/api/vaccine-centers/"  method="POST"
+                    {% endif %}>
+                {#alert#}
+                <div id="alert_placeholder"></div>
+                <input id="id" value="{{ vaccinecenterID }}" hidden>
+                <div class="form-group">
+                    <label for="name" class="col-form-label">Vaccine Center Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                
+ 			<div class="form-row">
+                                     <div class="form-group">
+                                        <label for="lat">Latitude:</label>
+                                        <input type="text" class="form-control" id="lat" name="lat"
+                                          required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="long">Longitude:</label>
+                                        <input type="text" class="form-control" id="long" name="long"
+                                               required>
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                     <div class="form-group">
+                                        <label for="stock">Stock:</label>
+                                        <input type="number" class="form-control" id="stock" name="stock"
+                                              required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dosesperhour">Doses Per Hour</label>
+                                        <input type="number" class="form-control" id="dosesperhour" name="dosesperhour"
+                                               required>
+                                    </div>
+
+                                    </div>
+
+                <br>
+                <div class="btn-container ">
+                    <a href="/admins/vaccine-center" class="btn btn-main-2 btn-round-full" id="cancel"><i
+                            class="material-icons button-icons">arrow_back</i><span>Cancel</span></a>
+                    {% if edit_vaccinecenter %}
+                        <button class="btn btn-main btn-round-full" type="submit">Update Vaccine Center</button>
+                    {% else %}
+                        <button class="btn btn-main btn-round-full" type="submit">Add Vaccine Center</button>
+                    {% endif %}
+
+                </div>
+            </form>
         </div>
-    </main>
+    </div>
+
 {% endblock %}
 
 {% block script %}
