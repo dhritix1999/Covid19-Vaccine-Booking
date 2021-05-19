@@ -20,18 +20,31 @@ def edit_industry(request, pk):
     return render(request, 'admin/industry/add-edit-industry.html', context)
 
 
+#medical issues
+def medical_issues_list(request):
+    return None
+
+
+def medical_add_medical_issue(request):
+    return None
+
+
+def medical_edit_medical_issue(request):
+    return None
+
 #vaccine centers
 def vaccine_centers_list(request):
     return render(request, 'admin/vaccine-center/vaccine-centers-table.html')
 
 
 def add_vaccine_center(request):
-    context = {"edit_industry": False}
-    return render(request, 'admin/vaccine-center/add-edit-center.html')
+    context = {"edit_center": False}
+    return render(request, 'admin/vaccine-center/add-edit-center.html', context)
 
 
 def edit_vaccine_center(request, pk):
-    context = {"edit_industry": True,
+    context = {"edit_center": True,
                "vaccineCenterID": pk
                }
-    return render(request, 'admin/vaccine-center/add-edit-center.html')
+    return render(request, 'admin/vaccine-center/add-edit-center.html', context)
+

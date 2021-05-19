@@ -12,14 +12,9 @@ def patient_register(request):
     return render(request, 'patient/register.html')
 
 
-def patient_homepage(request):
-    return render(request, 'patient/homepage.html')
-
-
-# ================================
 def admin_homepage(request):
     return render(request, 'admin/homepage.html')
 
 
-def logout(request):
-    return render(request, 'index.html')
+def patient_homepage(request):
+    return render(request, 'patient/homepage.html')

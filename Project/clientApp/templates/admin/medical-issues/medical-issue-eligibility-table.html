@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block head_title %} Industry | {{ block.super }}{% endblock head_title %}
+
+{#insert additional stylings#}
+{% block stylings %}
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+        <link href="{% static 'templates/css/data-table.css' %}" rel="stylesheet">
+
+{% endblock stylings %}
+
+{% block content %}
+
+    {% include 'admin/nav.html' %}
+
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2><b>Industry Priority</b></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="industry/add" class="btn btn-secondary"><i
+                                class="material-icons">&#xE147;</i> <span>Add New Industry</span></a>
+                    </div>
+                </div>
+            </div>
+            <table id="dataTable" class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Priority</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block script %}
+    {% load static %}
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="{% static 'templates/js/data-table.js' %}"></script>
+    <script type="text/javascript" src="{% static 'templates/js/industry/industry-priority.js' %}"></script>
+
+{% endblock script %}

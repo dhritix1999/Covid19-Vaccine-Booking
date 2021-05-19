@@ -27,14 +27,18 @@ urlpatterns = [
     path('admins/industry/add', adminsViews.add_industry),
     path('admins/industry/<int:pk>/edit', adminsViews.edit_industry),
 
-
-    # priority
-
+    # medical issues
+    path('admins/medical-issues', adminsViews.medical_issues_list),
+    path('admins/medical-issues/add', adminsViews.medical_add_medical_issue),
+    path('admins/medical-issues/<int:pk>/edit', adminsViews.medical_edit_medical_issue),
 
     # vaccine centers
     path('admins/vaccine-centers', adminsViews.vaccine_centers_list),
     path('admins/vaccine-centers/add', adminsViews.add_vaccine_center),
-    path('admins/vaccine-centers/<int:pk>/edit', adminsViews.edit_vaccine_center)
+    path('admins/vaccine-centers/<int:pk>/edit', adminsViews.edit_vaccine_center),
+
+    #logout
+    path('logout', authenticationViews.logout),
 
 
 ]
