@@ -8,14 +8,13 @@
 {% endblock stylings %}
 
 {% block content %}
-----------------
   {% include 'admin/nav.html' %}
 
     <div class="container">
         <div class="form-wrapper">
             <div class="row">
                 <div class="col-sm-12">
-                    {% if edit_vaccinecenter %}
+                    {% if edit_center %}
                         <h1><b>Edit Vaccine Center</b></h1>
                     {% else %}
                         <h1><b>Add Vaccine Center</b></h1>
@@ -24,39 +23,39 @@
             </div>
             <hr style="border-top: 5px solid #e12454;">
             <form id="form"
-                    {% if edit_vaccinecenter %} action="/api/vaccine-centers/{{ vaccinecenterID }}/"  method="PUT"
+                    {% if edit_center %} action="/api/vaccine-centers/{{ vaccineCenterID  }}/"  method="PUT"
                     {% else %} action="/api/vaccine-centers/"  method="POST"
                     {% endif %}>
                 {#alert#}
                 <div id="alert_placeholder"></div>
-                <input id="id" value="{{ vaccinecenterID }}" hidden>
+                <input id="id" value="{{ vaccineCenterID }}" hidden>
                 <div class="form-group">
                     <label for="name" class="col-form-label">Vaccine Center Name:</label>
                     <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 
  			<div class="form-row">
-                                     <div class="form-group">
-                                        <label for="lat">Latitude:</label>
-                                        <input type="text" class="form-control" id="lat" name="lat"
+                                     <div class="form-group  col-md-6">
+                                        <label for="locationLat">Latitude:</label>
+                                        <input type="number" step="0.001"  class="form-control" id="locationLat" name="locationLat"
                                           required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="long">Longitude:</label>
-                                        <input type="text" class="form-control" id="long" name="long"
+                                    <div class="form-group  col-md-6">
+                                        <label for="locationLng">Longitude:</label>
+                                        <input type="number" step="0.001"  class="form-control"  id="locationLng" name="locationLng"
                                                required>
                                     </div>
 
                                 </div>
                                 <div class="form-row">
-                                     <div class="form-group">
-                                        <label for="stock">Stock:</label>
-                                        <input type="number" class="form-control" id="stock" name="stock"
+                                     <div class="form-group  col-md-6">
+                                        <label for="dosesStock">Doses Stock:</label>
+                                        <input type="number" class="form-control" id="dosesStock" name="dosesStock"
                                               required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="dosesperhour">Doses Per Hour</label>
-                                        <input type="number" class="form-control" id="dosesperhour" name="dosesperhour"
+                                    <div class="form-group  col-md-6">
+                                        <label for="dosesPerHour">Doses Per Hour</label>
+                                        <input type="number" class="form-control" id="dosesPerHour" name="dosesPerHour"
                                                required>
                                     </div>
 
@@ -64,9 +63,9 @@
 
                 <br>
                 <div class="btn-container ">
-                    <a href="/admins/vaccine-center" class="btn btn-main-2 btn-round-full" id="cancel"><i
+                    <a href="/admins/vaccine-centers" class="btn btn-main-2 btn-round-full" id="cancel"><i
                             class="material-icons button-icons">arrow_back</i><span>Cancel</span></a>
-                    {% if edit_vaccinecenter %}
+                    {% if edit_center %}
                         <button class="btn btn-main btn-round-full" type="submit">Update Vaccine Center</button>
                     {% else %}
                         <button class="btn btn-main btn-round-full" type="submit">Add Vaccine Center</button>

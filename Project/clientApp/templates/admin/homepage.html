@@ -1,13 +1,10 @@
 {% extends "base.html" %}
-{% block head_title %} Patient | {{block.super}}{% endblock head_title %}
+{% block head_title %} Admin | {{block.super}}{% endblock head_title %}
 
 {#insert additional stylings#}
 {% block stylings %}
     {% load static %}
         <link href="{% static 'templates/css/profile/homepage.css' %}" rel="stylesheet">
-      <!-- Slick Slider  CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous" />
 
 {% endblock stylings %}
 
@@ -15,18 +12,18 @@
     {% include 'admin/nav.html' %}
 
 <!-- Slider Start -->
-<section class="banner">
+<section class="banner" style="background: url(../../static/templates/img/COVID-19-vaccine-banner.jpg) no-repeat; background-size:cover;">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-md-12 col-xl-7">
 				<div class="block">
 					<div class="divider mb-3"></div>
 					<span class="text-uppercase text-sm letter-spacing ">Fighting COVID-19 In U.A.E</span>
-					<h1 class="mb-3 mt-3">Vaccine Booking Portal</h1>
+					<h1 class="mb-3 mt-3">Admin Portal</h1>
 
 					<p class="mb-4 pr-5">Check this weeks insights</p>
 					<div class="btn-container ">
-						<a href="appoinment.html" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Check Insights</a>
+						<a href="#" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Check Insights</a>
 					</div>
 				</div>
 			</div>
@@ -53,7 +50,6 @@
 
 {% block script %}
       {% load static %}
-    <script type="text/javascript" src="{% static 'templates/js/profile/homepage.js' %}"></script>
 
         <script>
     $(document).ready(function () {
