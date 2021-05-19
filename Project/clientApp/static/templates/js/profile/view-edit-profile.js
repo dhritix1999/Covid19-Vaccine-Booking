@@ -1,7 +1,10 @@
 $(document).ready(function () {
 
-    //get cookie
-    console.log(get_cookie('patient'))
+
+    // validate user first
+    validate_user('patient')
+
+        //get cookie
     patient_id = get_cookie('patient')
 
     $('.selectpicker').selectpicker();

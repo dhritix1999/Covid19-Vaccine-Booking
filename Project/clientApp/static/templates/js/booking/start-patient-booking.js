@@ -1,6 +1,7 @@
 let patient_id
 $(document).ready(function () {
 
+     validate_user('patient')
     patient_id = get_cookie('patient')
     console.log(patient_id)
 

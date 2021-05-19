@@ -2,10 +2,6 @@
 
 
 ;(function ($) {
-
-
-
-
 	$('.clients-logo').slick({
 		infinite: true,
 		arrows: false,

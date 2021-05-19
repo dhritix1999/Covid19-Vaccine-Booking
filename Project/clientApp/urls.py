@@ -36,4 +36,5 @@ urlpatterns = [
     path('admins/vaccine-centers/add', adminsViews.add_vaccine_center),
     path('admins/vaccine-centers/<int:pk>/edit', adminsViews.edit_vaccine_center)
 
+
 ]

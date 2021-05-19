@@ -1,6 +1,10 @@
 let patient_id, vaccine_center_id;
 $(document).ready(function () {
 
+    //validate user first
+     validate_user('patient')
+
+
     patient_id = get_cookie('patient');
     vaccine_center_id = $('#vaccineCenter').val()
 

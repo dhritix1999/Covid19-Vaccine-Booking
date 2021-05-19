@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+ //validate admin
+         validate_user('admin')
     get_industries('/api/vaccine-centers/')
 
 

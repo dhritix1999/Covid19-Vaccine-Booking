@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+        //validate admin
+         validate_user('admin')
     const vaccineCenterForm = $("#form");
 
     if (vaccineCenterForm.attr('method') == 'POST')

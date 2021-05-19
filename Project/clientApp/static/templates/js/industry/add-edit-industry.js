@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+     //validate admin
+         validate_user('admin')
     const industryForm = $("#form");
 
     if (industryForm.attr('method') == 'POST')

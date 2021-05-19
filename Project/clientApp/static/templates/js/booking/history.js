@@ -4,8 +4,9 @@ $(document).ready(function () {
 
 
     $.when(
+          //validate user first
+     validate_user('patient'),
         patient_id = get_cookie('patient'),
-        console.log(patient_id)
     ).then(function () {
         get_bookings('/api/patients/' + patient_id + '/booking-slots/')
     })

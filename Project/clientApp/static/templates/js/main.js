@@ -155,3 +155,8 @@ function get_cookie(Name) {
    }
   return returnvalue;
 }
+
+function validate_user(cookie_name){
+    if (get_cookie(cookie_name) == "")
+        window.location.href="/"
+}
