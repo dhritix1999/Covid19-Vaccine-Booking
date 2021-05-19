@@ -1,4 +1,10 @@
 $(document).ready(function () {
+
+    //delete patient cookie if it exists
+    delete_cookie('admin')
+
+    //delete admin cookie if it exists
+    delete_cookie('admin')
   const adminSignInButton = document.getElementById('adminSignIn');
 const patientSignInButton = document.getElementById('patientSignIn');
 const container = document.getElementById('container');
