@@ -22,15 +22,21 @@ def edit_industry(request, pk):
 
 #medical issues
 def medical_issues_list(request):
-    return None
+    return render(request, 'admin/medical-issues/medical-issue-eligibility-table.html')
 
 
 def medical_add_medical_issue(request):
-    return None
+    context = {"edit_medical_issue": False}
+    return render(request, 'admin/medical-issues/add-edit-eligibility-table.html', context)
+
 
 
 def medical_edit_medical_issue(request):
-    return None
+    context = {
+        "edit_medical_issue": True,
+        "medicalIssueID": pk
+    }
+    return render(request, 'admin/medical-issues/add-edit-eligibility-table.html', context)
 
 #vaccine centers
 def vaccine_centers_list(request):

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block head_title %} Industry | {{ block.super }}{% endblock head_title %}
+{% block head_title %} Medical Issue | {{ block.super }}{% endblock head_title %}
 
 {#insert additional stylings#}
 {% block stylings %}
@@ -13,16 +13,18 @@
 
     {% include 'admin/nav.html' %}
 
+
+
     <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2><b>Industry Priority</b></h2>
+                        <h2><b>Medical Issue </b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a href="industry/add" class="btn btn-secondary"><i
-                                class="material-icons">&#xE147;</i> <span>Add New Industry</span></a>
+                        <a href="medical-issue/add" class="btn btn-secondary"><i
+                                class="material-icons">&#xE147;</i> <span>Add New Medical Issue</span></a>
                     </div>
                 </div>
             </div>
@@ -31,7 +33,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Priority</th>
+                    <th>Vaccine Eligibility</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -47,6 +49,6 @@
     {% load static %}
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="{% static 'templates/js/data-table.js' %}"></script>
-    <script type="text/javascript" src="{% static 'templates/js/industry/industry-priority.js' %}"></script>
+    <script type="text/javascript" src="{% static 'templates/js/medical_issue/medical-issue-eligibility.js' %}"></script>
 
 {% endblock script %}
